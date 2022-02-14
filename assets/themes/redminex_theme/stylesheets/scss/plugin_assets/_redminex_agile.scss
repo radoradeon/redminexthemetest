@@ -1,0 +1,312 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.redmine-x.com
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+
+/* ==========================================================================
+   RedmineX Agile
+   ========================================================================== */
+
+.rx-agile-my-page {
+	
+	.icon-settings:before {
+		margin-right: 0;
+		margin-left: 0.5rem;
+	}
+}
+
+.rx-agile-my-page-filters {
+    @include rounded;
+	background: $query-form-bg;
+	border: 1px solid $query-form-border;
+	margin-top: 1.5rem;
+	
+	&.open {
+		border: 1px solid $query-form-border !important;
+	}
+	
+	&>fieldset>legend {
+		width: 100%;
+	}
+	
+	fieldset {
+		background: none;
+		padding: 0 1rem !important;
+		
+		&>div {
+			padding: 1rem;
+		}
+		
+		legend {
+			background: none;
+		}
+	}
+	
+	fieldset.agile-filters.collapsible.collapsed>legend, 
+	fieldset.agile-filters.collapsible>legend {
+		background-image: none !important;
+	}
+}
+
+.webix_kanban_drag_zone {
+	transform: rotate(5deg);
+}
+
+.reset-search-btn {
+	@include btn;
+	@include btn-primary;
+	display: block;
+	margin: 0.5rem auto;
+	
+	@include media-breakpoint-up(xs) {
+		display: inline-block;
+		margin: 0;
+	}
+}
+
+.agile-card-body.issue-card {
+	border-radius: $border-radius;
+	padding: 0.75rem 1rem;
+	background: $white !important;
+    border: 1px solid $border-color-light;
+    border-left-width: 6px !important;
+}
+
+.issue-card {
+	
+	.info {
+		display: block;
+		clear: both;
+		border-top: 1px solid $border-color-light;
+	    padding-top: 5px;
+	    margin-top: 5px;
+	}
+	
+	.avatar {
+		@include rounded360;
+		margin-right: 0.5rem;
+	    object-fit: cover;
+	    border: 1px solid $border-color-light;
+	    position: relative;
+	    top: 2px;
+	    max-width: none;
+	}
+	
+	a.user,
+	.name a {
+		color: $text-color;
+		
+		&:hover {
+			color: $link-color;
+		}
+	}
+	
+	.issue-id>a {
+		font-weight: normal !important;
+	}
+}
+
+.kanban-controls {
+	margin-top: 1rem;
+	
+	.search-group,
+	.select-sprint-group {
+		
+		@include media-breakpoint-up(xs) {
+			padding-left: 130px !important;
+		}
+	}
+	
+	.search-group label,
+	.select-sprint-group label {
+		
+		@include media-breakpoint-up(xs) {
+			margin-left: -120px;
+			width: 100px;
+			float: left;
+			text-align: right;
+		}
+	}
+}
+
+.kanban-board {
+	
+	.webix_kanban_list_item:first-child {
+		margin-top: 0.5rem;
+	}
+	
+	.webix_kanban_list_item, 
+	.webix_kanban_list_item.webix_list_item.webix_selected {
+		padding-top: 5px !important;
+	}
+	
+	.webix_kanban_sub_header {
+		background: $body-bg !important;
+		border: 1px solid $border-color-light !important;
+		width: 100% !important;
+		
+		.webix_template {
+			padding: 0.75rem 1rem !important;
+		}
+	}
+	
+	.webix_header {
+		padding: 1rem 0;
+		border-color: $border-color-light !important;
+	}
+	
+	.webix_view.webix_header, 
+	.webix_layout_line>.webix_layout_line:first-child,
+	.webix_layout_line, 
+	.webix_multiview, 
+	.webix_layout_clean, 
+	.webix_layout_accordion,
+	.webix_kanban, 
+	.webix_kanban_list {
+		background: $body-bg !important;
+	}
+	
+	.webix_view.webix_layout_clean {
+		margin: 0 !important;
+		padding-left: 0.5rem;
+		padding-bottom: 0.5rem;
+		width: 100% !important;
+	}
+		
+	.webix_view.webix_header {
+		border: 1px solid $border-color-light;
+	}
+	
+	.webix_view.webix_kanban.webix_layout_space,
+	.webix_view.webix_layout_line {
+		background: none !important;
+	}
+	
+	.webix_view.webix_layout_line > .webix_view.webix_layout_line:first-child {
+		display: flex;
+		padding-bottom: 0.5rem;
+	}
+	
+	.webix_layout_space>.webix_view.webix_layout_line {
+		border: none !important;
+	}
+	
+	.webix_view.webix_layout_line {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+		
+		&+.webix_view.webix_layout_line {
+			border-top: none !important;
+			border-color: $border-color-light !important;
+		}
+	}
+}
+
+.issue-card {
+	
+	&.bk-yellow {
+		border-left-color: $brand-yellow !important;
+	}
+	
+	&.bk-red {
+		border-left-color: $brand-danger !important;
+	}
+	
+	&.bk-lightgreen,
+	&.bk-green  {
+		border-left-color: $brand-success !important;
+	}
+	
+	&.bk-purple {
+		border-left-color: $brand-immediate !important;
+	}
+	
+	&.bk-turquoise  {
+		border-left-color: $primary !important;
+	}
+	
+	&.bk-orange  {
+		border-left-color: $brand-warning !important;
+	}
+}
+
+
+.theme-Redminex .issue-card.bk-gray {
+	border-color: $border-color-light !important;
+}
+
+.webix_drag_zone {
+	font-size: inherit !important;
+}
+
+
+.rx-agile-my-page-btns {
+	@include rounded;
+	border: 1px solid $border-color-light;
+	display: inline-block;
+	
+	input {
+		position: absolute !important;
+		visibility: hidden;
+		position: absolute;
+		top: 2px;
+	}
+	
+	label {
+		display: inline-block;
+		height: 100%;
+		padding: 0.25rem 0.6rem;
+	}
+	
+	input:checked + label {
+	    background-color: $border-color-light;
+	}
+}
+
+.webix_message_area {
+	top: 65px !important;
+}
+
+.board-filters label {
+	display: block;
+	
+	&:not(:last-child) {
+		margin-bottom: 1rem;
+	}
+	
+	@include media-breakpoint-up(xl) {
+		display: inline-block;
+		margin-right: 1rem;
+		margin-bottom: 0;
+	}
+}

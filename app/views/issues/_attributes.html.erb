@@ -1,0 +1,100 @@
+<%= labelled_fields_for :issue, @issue do |f| %>
+
+<div class="projectino-addtitional-fields-wrap">
+  <a id="projectino-addtitional-fields-trigger" href="javascript:void(0)">
+    <span><%= l(:additional_options) %></span>
+    <i class="fal fa fa-angle-down"></i>
+  </a>
+
+  <div class="projectino-addtitional-fields">
+    <div class="splitcontent">
+      <div class="splitcontentleft">
+
+        <!-- CHANGE is_private moved here from _form.html.erb -->
+        <% if @issue.safe_attribute? 'is_private' %>
+        <p id="issue_is_private_wrap">
+          <%= f.check_box :is_private, :no_label => true %><label class="inline" for="issue_is_private" id="issue_is_private_label"><%= l(:field_is_private) %></label>
+        </p>
+        <% end %>
+
+        <!-- CHANGE status_id and priority_id moved to _form.html.erb -->
+
+        <!-- CHANGE assigned_to_id and start_date moved to _form.html.erb -->
+
+        <!-- CHANGE category_id a fixed_version_id moved to splitcontentright below -->
+
+        <!-- CHANGE parent_issue_id and done_ration moved here from splitcontentright below -->
+
+        <% if @issue.safe_attribute? 'parent_issue_id' %>
+        <p id="parent_issue"><%= f.text_field :parent_issue_id, :size => 10,
+                                              :required => @issue.required_attribute?('parent_issue_id'),
+                                              :onchange => "updateIssueFrom('#{escape_javascript update_issue_form_path(@project, @issue)}', this)" %></p>
+        <%= javascript_tag "observeAutocompleteField('issue_parent_issue_id', '#{escape_javascript(auto_complete_issues_path(:project_id => @issue.project, :scope => Setting.cross_project_subtasks, :status => @issue.closed? ? 'c' : 'o', :issue_id => @issue.id))}')" %>
+        <% end %>
+
+        <% if @issue.safe_attribute?('done_ratio') && Issue.use_field_for_done_ratio? %>
+        <p><%= f.select :done_ratio, ((0..10).to_a.collect {|r| ["#{r*10} %", r*10] }), :required => @issue.required_attribute?('done_ratio') %></p>
+        <% end %>
+
+    </div>
+
+    <div class="splitcontentright">
+        <!-- CHANGE parent_issue_id, start_date and done_ration moved to splitcontentleft above -->
+
+        <!-- CHANGE due date and estimated hours moved to _form.html.erb -->
+
+        <!-- CHANGE category_id a fixed_Version_id moved here from splitcontentleft above -->
+
+        <% if @issue.safe_attribute?('category_id') && @issue.project.issue_categories.any? %>
+        <p><%= f.select :category_id, (@issue.project.issue_categories.collect {|c| [c.name, c.id]}),
+                        {:include_blank => true, :required => @issue.required_attribute?('category_id')},
+                         :onchange => ("updateIssueFrom('#{escape_javascript(update_issue_form_path(@project, @issue))}', this)" if @issue.new_record?) %>
+        <%= link_to(l(:label_issue_category_new),
+                    new_project_issue_category_path(@issue.project),
+                    :remote => true,
+                    :method => 'get',
+                    :title => l(:label_issue_category_new),
+                    :tabindex => 200,
+                    :class => 'icon-only icon-add'
+                   ) if User.current.allowed_to?(:manage_categories, @issue.project) %></p>
+        <% end %>
+
+        <% if @issue.safe_attribute?('fixed_version_id') && @issue.assignable_versions.any? %>
+        <p><%= f.select :fixed_version_id, version_options_for_select(@issue.assignable_versions, @issue.fixed_version),
+                        :include_blank => true, :required => @issue.required_attribute?('fixed_version_id') %>
+        <%= link_to(l(:label_version_new),
+                    new_project_version_path(@issue.project),
+                    :remote => true,
+                    :method => 'get',
+                    :title => l(:label_version_new),
+                    :tabindex => 200,
+                    :class => 'icon-only icon-add'
+                   ) if User.current.allowed_to?(:manage_versions, @issue.project) %>
+        </p>
+        <% end %>
+
+      </div>
+    </div>
+
+
+    <% if @issue.safe_attribute? 'custom_field_values' %>
+    <%= render :partial => 'issues/form_custom_fields' %>
+    <% end %>
+
+    <!-- CHANGE call_hook :view_issues_form_details_bottom moved here from _form.html.erb -->
+    <%= call_hook(:view_issues_form_details_bottom, { :issue => @issue, :form => f }) %>
+
+    <!-- CHANGE watchers_form_container moved here from _new.html.erb -->
+    <!-- Only for new issues -->
+    <% unless @issue.id %>
+      <div id="watchers_form_container">
+        <%= render :partial => 'issues/watchers_form' %>
+      </div>
+    <% end %>
+
+  </div>
+</div>
+
+<% end %>
+
+<% include_calendar_headers_tags %>

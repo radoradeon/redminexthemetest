@@ -1,0 +1,94 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.projectino.cz
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+
+/* ==========================================================================
+   Search view & search form
+   ========================================================================== */
+
+#search-form {
+	
+	select {
+		max-width: $input-max-width-xs;
+	}
+	
+	.collapsible:not(.collapsed) {
+		margin-bottom: 1rem !important;
+	}
+	
+	#options-content label {
+		display: block;
+	}
+	
+	fieldset.collapsible {
+		border: 1px solid transparent;
+	}
+	
+	fieldset.collapsible:not(.collapsed) {
+		border: 1px solid $border-color-light;
+	}
+}
+
+#search-results {
+	@include rounded;
+	padding: 2rem 0;
+	background: $white;
+	
+	dt, dd {
+		padding: 0 2rem;
+	}
+	
+	dt:not(:first-of-type) {
+	    border-top: 3px solid $body-bg;
+		padding-top: 1rem;
+	}
+	
+	dd {
+		margin: 0 0 1rem 26px;
+	}
+}
+
+#search-results-counts {
+	margin: 1rem 0;
+	
+	ul {
+		padding: 0;
+		display: flex;
+	}
+	
+	li {
+		list-style: none;
+		margin-right: 1rem;
+	}
+}

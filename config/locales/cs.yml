@@ -1,0 +1,104 @@
+# English strings go here for Rails i18n
+cs:
+  # theme.js
+  theme_js:
+    filters_and_options: 'Filtry \u0026 Možnosti'
+
+  # standard_theme.js
+  standard_theme_js:
+    # Attachments button
+    open_attachments_button: 'Zobrazit všechny přílohy'
+    close_attachments_button: 'Zavřít přílohy'
+
+  # plugin
+  top_menu_hamburger_additional_features: Další funkce
+  top_menu_hamburger_plugins: Pluginy
+  top_menu_hamburger_system: Systém
+  top_menu_hamburger_user: Uživatel
+  top_menu_hamburger_activity: Aktivity
+  show_spent_time_in_top_menu: Zobrazit odpracovaný čas v menu
+  number_of_items_in_project_menu: Počet viditelných položek v projektovém menu
+  remember_collapsed_issues_state: 'Pamatovat si sbalený stav u "seskupených výsledků"'
+  color_label: Barva
+  top_menu_label: Levé menu
+  project_menu_label: Projektové menu
+  logo_image_label: Logo
+  remove_logo: Odstranit logo
+  login_images_label: Pozadí přihlašovací stránky
+  login_desktop_label: Pozadí pro desktop (pouze .JPG)
+  login_mobile_label: Pozadí pro mobil (pouze .JPG)
+  remove_login: Odstranit pozadí
+  additional_options: Další možnosti
+  #target version
+  field_fixed_version: Milník
+  label_issue_fixed_version_updated: Milník aktualizován
+  label_attribute_of_fixed_version: "Milník %{name}"
+  label_version: Milník
+  label_version_new: Nový milník
+  label_version_plural: Milníky
+  label_version_and_files: Milníky (%{count}) a soubory
+  label_close_versions: Zavřít dokončené milníky
+  field_is_in_roadmap: Úkoly zobrazené v milnících
+  label_roadmap: Milníky
+  label_roadmap_no_issues: Pro tento milník nejsou žádné úkoly
+  field_version: Milník
+  notice_unable_delete_version: Nemohu odstranit milník
+  error_can_not_reopen_issue_on_closed_version: 'Úkol přiřazený k uzavřenému milníku nemůže být znovu otevřen'
+  field_default_version: Výchozí milník
+  permission_manage_versions: Spravování milníků
+  label_current_version: Aktuální milník
+  label_completed_versions: Dokončené milníky
+  label_attribute_of_fixed_version: "Cílový milník %{name}"
+  label_latest_compatible_version: Poslední kompatibilní milník
+  button_rollback: Zpět k tomuto milníku
+  field_is_in_roadmap: Úkoly zobrazené v milnících
+  label_roadmap_no_issues: Pro tento milník nejsou žádné úkoly
+  label_show_completed_versions: Zobrazit dokončené milníky
+
+  #create button
+  button_create: Uložit
+  button_create_and_continue: Uložit a nový
+  #tracker
+  error_no_tracker_in_project: Žádný typ úkolu nebyl přiřazen tomuto projektu. Prosím zkontroluje nastavení projektu.
+  error_can_not_delete_tracker: Tento typ úkolu obsahuje úkoly a nemůže být smazán.
+  error_workflow_copy_source: Prosím vyberte zdrojový typ úkolu nebo roli
+  error_workflow_copy_target: Prosím vyberte cílový typ úkolu(y) a roli(e)
+  error_no_tracker_allowed_for_new_issue_in_project: Projekt neobsahuje žádný typ úkolu, pro který lze vytvořit úkol
+  error_no_projects_with_tracker_allowed_for_new_issue: Neexistují projekty s typem úkolu, pro který lze vytvořit úkol
+  field_tracker: Typ úkolu
+  setting_default_projects_tracker_ids: Výchozí typ úkolu pro nové projekty
+  label_tracker: Typ úkolu
+  label_tracker_plural: Typy úkolu
+  label_tracker_all: Všechny typy úkolu
+  label_tracker_new: Nový typ úkolu
+  label_display_used_statuses_only: Zobrazit pouze stavy které jsou použité tímto typem úkolu
+  label_trackers_description: Popis typů úkolu
+  label_open_trackers_description: Zobrazit popis všech typů úkolu
+  text_workflow_edit: Vyberte roli a typ úkolu k editaci průběhu práce
+  text_tracker_no_workflow: Pro tento typ úkolu není definován žádný průběh práce
+  text_status_no_workflow: Žádný typ úkolu nepoužívá tento stav v průběhu práce
+  text_no_configuration_data: "Role, typy úkolů, stavy úkolů ani průběh práce nebyly zatím nakonfigurovány.\nVelice doporučujeme nahrát výchozí konfiguraci. Po té si můžete vše upravit"
+  text_select_apply_tracker: Použít typ úkolu
+  #spent time
+  error_cannot_reassign_time_entries_to_an_issue_about_to_be_deleted: Odpracovaný čas nemůže být přiřazen k úkolu, který se bude mazat
+  permission_log_time: Odpracovaný čas
+  permission_view_time_entries: Zobrazení odpracovaného času
+  permission_log_time_for_other_users: Záznam odpracovaného času ostatních uživatelů
+  label_spent_time: Odpracovaný čas
+  label_total_spent_time: Celkem odpracovaný čas
+  label_overall_spent_time: Celkem odpracovaný čas
+  label_time_entry_plural: Odpracovaný čas
+  #issue - v cz přeloženo správně
+
+  # Project Aggregator
+  project_aggregator_box_title: 'Informace o projektu'
+  project_start_date: 'Začátek projektu'
+  project_due_date: 'Konec projektu'
+  project_completion_progress_bar: 'Průběh projektu'
+  project_completion: 'Dokončení projektu podle stráveného času'
+  project_progress: 'Průběh projektu podle % Hotovo'
+
+  # My page blocks
+  my_open_close_icon_button: 'Otevřít/Uzavřít'
+
+

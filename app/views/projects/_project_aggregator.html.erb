@@ -1,0 +1,61 @@
+<div class="project-aggregate box">
+  <h3 class="icon icon-project"><%= l(:project_aggregator_box_title) %></h3>
+
+  <!-- Project completion by spent time including subprojects -->
+  <div class="project-completion project-item">
+    <div class="label"><%= l(:project_completion) %></div>
+    <% if completion > 100 %>
+      <div class="value overflow"><%= completion %>%</div>
+    <% else %>
+      <div class="value"><%= completion %>%</div>
+    <% end %>
+  </div>
+
+  <!-- Project completion by spent time including subprojects -->
+  <div class="project-done-ratio project-item">
+    <div class="label"><%= l(:project_progress) %></div>
+    <div class="value"><%= progress %>%</div>
+  </div>
+
+  <!-- Project start date  -->
+  <div class="project-start-date project-item">
+    <div class="label"><%= l(:project_start_date) %></div>
+    <div class="value"><%= @project.start_date ? format_date(@project.start_date) : 'N/A' %></div>
+  </div>
+
+  <!-- Project start date  -->
+  <div class="project-due-date project-item">
+    <div class="label"><%= l(:project_due_date) %></div>
+    <div class="value"><%= @project.due_date ? format_date(@project.due_date) : 'N/A' %></div>
+  </div>
+
+  <!-- Estimated hours including subprojects -->
+  <div class="estimated-hours project-item">
+    <div class="label"><%= l(:field_estimated_hours) %></div>
+    <div class="value">
+      <%= l(:label_f_hour_plural, @total_estimated_hours ? '%.2f' % @total_estimated_hours : '%.2f' % 0) %>
+    </div>
+  </div>
+
+  <!-- Total spent time including subprojects -->
+  <div class="spent-time project-item">
+    <div class="label"><%= l(:label_spent_time) %></div>
+    <div class="value">
+      <%= l(:label_f_hour_plural, @total_hours ? '%.2f' % @total_hours: '%.2f' % 0) %>
+    </div>
+  </div>
+
+  <!-- List of subprojects (visible only if there are some) -->
+  <% unless @subprojects&.count&.zero? %>
+    <div class="subprojects project-item">
+      <div class="label"><%= l(:label_subproject_plural) %></div>
+      <div class="value">
+        <ul>
+          <% @subprojects.each do |project| %>
+            <li><%= link_to(project.name, project_path(project)) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</div>

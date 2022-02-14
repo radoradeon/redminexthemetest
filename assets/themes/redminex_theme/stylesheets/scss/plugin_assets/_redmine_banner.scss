@@ -1,0 +1,128 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.projectino.cz
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+
+/* ==========================================================================
+   Redmine Banner
+   ========================================================================== */
+
+body>.banner_area {
+	bottom: 0.5rem;
+}
+
+#wrapper3>.banner_area,
+#content>.banner_area {
+	display: none;
+}
+
+.banner_area {
+	max-width: 360px;
+	position: fixed !important;
+	left: 0.5rem;
+	right: 0.5rem;
+	z-index: $zindex-tooltip;
+}
+
+div.banner {
+	margin: 0 !important;
+	padding-right: 4rem !important;
+	min-height: 84px;
+}
+
+.banner_edit {
+	border-radius: 0 $border-radius $border-radius 0;
+	background: $text-color !important;
+	height: calc(100% - 2px);
+	top: 1px !important;
+	bottom: unset !important;
+	right: 1px !important;
+	opacity: 1 !important;
+	
+	.icon {
+		font-size: 0;
+		color: transparent;
+		display: block;
+		background: none;
+		text-align: center;
+		height: 50%;
+		
+		&:before {
+			@extend %fa-icon;
+			@extend .fal;
+			margin: 0;
+			font-size: $fa-font-size-base;
+			color: $white;
+			padding: 0.75rem 0.5rem;
+		}
+		
+		&:hover:before {
+			color: $link-color;
+		}
+	}
+	
+	.banner-icon-edit:before {
+		content: fa-content($fa-var-edit);
+	}
+	
+	.banner-icon-off:before {
+		content: fa-content($fa-var-times);
+	}
+}
+
+.banner_alert:not(p>span.banner_alert) {
+	background: $message-danger !important;
+	border: 1px solid darken($message-danger, 10%) !important;
+	color: $white !important;
+	
+	&:before {
+		content: fa-content($fa-var-exclamation-triangle);
+		@extend %fa-icon;
+		@extend .fal;
+		color: $white;
+	}
+}
+
+.controller-account.action-login {
+	
+	.banner_area {
+		display: none;
+	}
+}
+
+#banner_setting {
+	
+	input[type="radio"] {
+		top: 0 !important;
+	}
+}

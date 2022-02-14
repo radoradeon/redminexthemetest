@@ -1,0 +1,285 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.redmine-x.com
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+ 
+/* ==========================================================================
+   UI Widget
+   ========================================================================== */
+
+.ui-datepicker {
+	z-index: 99999 !important;
+}
+
+#ajax-modal form {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	
+	p.buttons {
+		margin-top: auto;
+	}
+	
+	.select2-container--default .select2-selection--single {
+		border-color: $border-color-light !important;
+		height: $input-height !important;
+	}
+	
+	.select2-container--default 
+	.select2-selection--single .select2-selection__rendered {
+		font-size: $font-size-sm2;
+		line-height: 34px;
+	}	
+	
+	.select2-selection__arrow {
+		line-height: 34px;
+		height: 34px !important;
+	}
+}
+
+.ui-widget-overlay {
+	background: darken($primary, 53%);
+	opacity: 0.5;
+}
+
+.ui-dialog {
+	padding: 1rem;
+	
+	.ui-dialog-titlebar {
+		padding: 1rem;
+	}
+	
+	.ui-dialog-titlebar-close {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.ui-widget-header {
+	border: none;
+	background: none;
+	color: $text-color;
+}
+
+.ui-dialog-title {
+	font-size: 1.25em;
+	color: $headings-color;
+}
+
+.modal {
+	max-width: 899px;
+	display: none;
+	z-index: $zindex-modal !important;
+	
+	.title {
+		display: none;
+	}
+	
+	&.ui-dialog .ui-dialog-titlebar {
+		padding: 0 !important;
+	}
+	
+	&.ui-dialog-content {
+		padding: 0 1rem;
+	}
+	
+	.ui-dialog-titlebar, 
+	.ui-dialog-content {
+		max-width: 95% !important;
+	}
+	
+	&.ui-widget-content a {
+		color: $link-color;
+	}
+	
+	&.ui-dialog .ui-dialog-titlebar-close {
+		right: 0.25rem;
+		top: 0.25rem;
+		background: none;
+		border: none;
+		color: $headings-color;
+		
+		@include rounded;
+		padding: 0.25rem;
+		
+		&:focus {
+			outline: none;
+		}
+		
+		&:hover {
+			background: $primary;
+			
+			.ui-icon-closethick:before {
+				color: $white !important;
+			}
+		}
+	}
+	
+	.ui-button-text {
+		padding: 0;
+	}
+	
+	.ui-state-default .ui-icon {
+		background: none;
+	}
+	
+	.ui-icon {
+		text-indent: 0;
+	}
+	
+	.buttons {
+		padding-top: 1rem;
+		display: flex;
+		justify-content: center;
+	}
+	
+	dd {
+		margin: 0;
+	}
+	
+	textarea {
+		width: 100%;
+		display: block;
+	}
+	
+	input[type="submit"]+input[type="button"] {
+		@include btn;
+		@include btn-tetriary;
+	}
+	
+	input[type="submit"] {
+		@include btn-secondary;
+		margin-right: 0.5rem;
+	}
+}
+
+.ui-sortable-helper {
+	transform: rotate(1deg);
+}
+
+.ui-state-default, 
+.ui-widget-content .ui-state-default, 
+.ui-widget-header .ui-state-default {
+	border: 1px solid $border-color-light;
+	background: $border-color-light;
+	font-weight: normal;
+	color: $text-color;
+}
+
+.ui-datepicker .ui-datepicker-title {
+	margin: 0 1.5rem;
+}
+
+.ui-state-highlight {
+	background: $primary !important;
+	border-color: $primary !important;
+	color: $white !important;
+}
+
+#users_for_watcher {
+	
+	label {
+		display: block;
+	}
+}
+
+.ui-front {
+	z-index: $zindex-modal-backdrop;
+}
+
+.ui-widget,
+.ui-dialog,
+.ui-widget.ui-dialog {
+	z-index: 99999 !important;
+}
+
+.ui-datepicker .ui-datepicker-prev, 
+.ui-datepicker .ui-datepicker-next {
+	background: none !important;
+	border: none !important;
+	top: 7px !important;
+	
+	&.ui-state-hover
+	&:hover {
+		background: none !important;
+		border: none !important;
+		
+		.ui-icon:before {
+			color: $primary;
+		}
+	}
+	
+	.ui-icon:before {
+		margin: 0 !important;
+	}
+}
+
+.ui-datepicker .ui-datepicker-next {
+	right: -3px;
+}
+
+.ui-datepicker .ui-datepicker-prev-hover {
+	left: 2px !important;
+}
+
+.ui-datepicker .ui-datepicker-next-hover {
+	right: -3px !important;
+}
+
+.ui-datepicker .ui-datepicker-next-hover,
+.ui-datepicker .ui-datepicker-prev-hover {
+	top: 7px !important;
+	
+	.ui-icon:before {
+		color: $primary;
+	}
+}
+
+.ui-datepicker-div {
+	display: none !important;
+	
+	.ui-state-default {
+		text-align: center;
+	}
+	
+	.ui-state-active {
+		background: $primary;
+		color: $white;
+	}
+	
+	.ui-datepicker-today .ui-state-highlight {
+		background: lighten($brand-yellow, 5%) !important;
+		color: $text-color !important;
+		border-color: lighten($brand-yellow, 5%) !important;
+	}
+}

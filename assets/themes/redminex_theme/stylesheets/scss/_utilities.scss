@@ -1,0 +1,143 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.redmine-x.com
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+ 
+/* ==========================================================================
+   Utilities
+   ========================================================================== */
+
+.hidden {
+	display: none;
+}
+
+.ui-tooltip,
+.ui-widget.ui-tooltip {
+	@include rounded;
+	background: $primary-dark;
+	color: $white;
+	font-size: 80%;
+	border: none !important;
+	box-shadow: none !important;
+	padding: 4px 8px !important;
+}
+
+.bg-primary {
+	background: $primary;
+}
+
+.bg-secondary {
+	background: $secondary;
+}
+
+.inline {
+	display: inline-block;
+}
+
+.block {
+	display: block;
+}
+
+.rotate45:before {
+	@include rotate45;
+}
+
+img {
+	max-width: 100%;
+}
+
+/*
+ * Gravatar
+ */
+
+.gravatar {
+	@include rounded360;
+	object-fit: cover;
+	border: 1px solid $border-color-light;
+	position: relative;
+	top: 2px;
+	max-width: none;
+	
+	&:after {
+		content: '';
+		display: block;
+    	padding-bottom: 100%;
+	}
+}
+
+.gravatar-child {
+	position: relative;
+	left: -1rem;
+}
+
+.gravatar-with-child {
+	
+	img {
+		top: 0;
+		margin-right: 1rem;
+	}
+	
+	img:first-child {
+		width: 32px;
+		height: 32px;
+	}
+	
+	img:last-child:not(:only-child) {
+		left: -1.5rem;
+		margin-right: -1rem;
+		box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
+	}
+}
+
+.controller-users.action-edit {
+	
+	.gravatar {
+		top: 8px;
+		width: 32px;
+		height: 32px;
+		margin-right: 0.5rem;
+	}
+}
+
+.controller-users.action-show {
+	
+	.gravatar {
+		width: 32px;
+		height: 32px;
+		top: 8px;
+	}
+}
+
+.text-center {
+	text-align: center;
+}

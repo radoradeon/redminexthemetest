@@ -1,0 +1,332 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.projectino.cz
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+
+/* ==========================================================================
+   Redmine Agile
+   ========================================================================== */
+
+.controller-agile_queries {
+	
+	.box>.tabular {
+		border: none !important;
+	}
+	
+	fieldset#filters {
+		border: 1px solid $border-color-light !important;
+		padding: 1rem !important;
+		margin-top: 1rem;
+	}
+}
+
+.live_search input.live_search_field {
+	font-size: $font-size-sm1;
+	
+	@include media-breakpoint-up(hd) {
+		font-size: $font-size-sm2;
+	}
+	
+	@include media-breakpoint-up(2k) {
+		font-size: $font-size-lg;
+	}
+}
+
+.agile-board,
+.controller-agile_versions {
+	
+	.add-issue:hover {
+		background-color: darken($body-bg, 4%);
+	}
+	
+	.quick-comment {
+		
+		&>button,
+		&>button+a {
+			@include btn;
+			@include btn-sm;
+		}
+		
+		&>button {
+			@include btn-primary;
+		}
+		
+		&>button+a {
+			@include btn-tetriary;
+		}
+	}
+	
+	input.new-card__input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]), select {
+		max-width: none !important;
+	}
+	
+	table.list.issues-board  {
+		
+		thead>tr {
+			background: $body-bg;
+		}
+		
+		&.sticky {
+			top: 52px !important;
+		}
+		
+		tbody {
+			border: none !important;
+		}
+		
+		tbody tr, 
+		tbody tr:hover {
+			background: $body-bg !important;
+			border: none !important;
+		}
+		
+		thead {
+			border: 1px solid $border-color-light;
+		}
+		
+		th {
+			border-right:  1px solid $border-color-light;
+		}
+		
+		.progress {
+			margin-bottom: 2rem;
+		}		
+	}
+	
+	.issue-card {
+		@include rounded;
+		padding: 0.75rem 1rem;
+		background: $white !important;
+		border: 1px solid $border-color-light;
+		border-left-width: 6px;
+		
+		.info {
+			display: block;
+			clear: both;
+		}
+		
+		&.context-menu-selection .attributes, 
+		&.context-menu-selection em.info {
+			color: inherit !important;
+		}		
+	
+		#checklist_items {
+			padding-left: 1rem;
+		}
+		
+		&:hover {
+			@include box-shadow-container-hover;
+		}
+		
+		div.quick-edit-card {
+			border: none;
+			background: none;
+			height: auto;
+		}
+		
+		&.bk-yellow {
+			border-left-color: $brand-yellow !important;
+		}
+		
+		&.bk-red {
+			border-left-color: $brand-danger !important;
+		}
+		
+		&.bk-lightgreen,
+		&.bk-green  {
+			border-left-color: $brand-success !important;
+		}
+		
+		&.bk-purple {
+			border-left-color: $brand-immediate !important;
+		}
+		
+		&.bk-turquoise  {
+			border-left-color: $primary !important;
+		}
+		
+		&.bk-orange  {
+			border-left-color: $brand-warning !important;
+		}
+		
+		&.bk-gray {
+			border-left-color: $border-color-light !important;
+		}
+		
+		.attributes {
+			padding: 0;
+			margin: 0;
+		}	
+		
+		&:not(.context-menu-selection) .attributes, 
+		&:not(.context-menu-selection) span.hours, 
+		&.context-menu-selection .attributes, 
+		&.context-menu-selection span.hours {
+			color: $text-color;
+		}
+		
+		.attributes, 
+		span.hours, 
+		em.info {
+			font-size: $font-size-sm2;
+		}
+		
+		.issue-id strong {
+			font-weight: normal !important;
+		}
+		
+		p.name {
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			
+			&>a {
+				display: block;
+			}
+		}
+	}
+}
+
+.controller-agile_charts {
+	
+	#chart_unit {
+		width: auto;
+	}
+}
+
+.agile_options .card-fields .floating {
+	margin-bottom: 0.25rem;
+}
+
+.controller-agile_boards {
+	
+	.query-totals+form>.select2 {
+		display: none;
+	}
+	
+	.issue-card div.quick-edit-card {
+		right: 1rem;
+		bottom: 0.5rem;
+		display: block;
+		opacity: 0.5;
+	}
+	
+	.issue-card .quick-edit {
+		margin-right: 0.5rem;
+	}
+	
+	.issue-card .assigned-user span {
+		width: calc(100% - 46px);
+		display: block;
+	}
+	
+	.agile_options_field {
+		min-width: 50%;
+		display: block;
+		margin-bottom: 0.25rem;
+		
+		@include media-breakpoint-up(hd) {
+			display: inline-block;
+		}
+		
+		@include media-breakpoint-up(2k) {
+			min-width: 30%
+		}
+	}
+	
+	.issue-status-col {
+		padding: 0.125rem !important;
+		
+		@include media-breakpoint-up(hd) {
+			padding: 0.25rem !important;
+		}
+
+		@include media-breakpoint-up(2k) {
+			padding: 0.5rem !important;
+		}
+	}
+}
+
+.controller-agile_versions {
+	
+	.planning-board {
+		
+		.column-content,
+		.column-header {
+			border: none;
+			background: none;
+		}
+	}
+}
+
+.agile-board-fullscreen {
+	
+	div.agile-board {
+		background: $body-bg !important;
+	}
+	
+	#content>.contextual {
+		display: none;
+	}
+	
+	.container-fixed {
+		padding-top: 53px !important;
+	}
+	
+	#agile-board-errors {
+		margin-top: 53px !important;
+		z-index: 999999 !important;
+		margin-bottom: -53px !important;
+	}
+}
+
+.card-fields {
+	margin-bottom: 0.5rem !important;
+}
+
+table.issues-board tr.group.swimlane td {
+	border-color: $border-color-light !important;
+}
+
+/* ==========================================================================
+   Backlog
+   ========================================================================== */
+
+.controller-agile_versions.action-index {
+	
+	#sidebar {
+		padding-top: 0;
+	}
+}

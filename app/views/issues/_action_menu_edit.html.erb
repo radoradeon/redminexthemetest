@@ -1,0 +1,12 @@
+<div style="clear: both;"></div>
+<!-- CHANGE - We don't want to show bottom action edit menu, but we have to keep
+     edit partial below -->
+<%#= render :partial => 'action_menu' %>
+
+<div style="clear: both;"></div>
+<% if @issue.editable? %>
+  <div id="update" style="display:none;">
+    <h3><%= l(:button_edit) %></h3>
+    <%= render :partial => 'edit' %>
+  </div>
+<% end %>

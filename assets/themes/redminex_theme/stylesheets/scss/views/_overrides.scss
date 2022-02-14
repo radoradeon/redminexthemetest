@@ -1,0 +1,228 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.projectino.cz
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+ 
+/* ==========================================================================
+   Overrides
+   ========================================================================== */
+
+#context-menu {
+	font-size: $font-size-base !important;
+}
+
+.ui-widget {
+	@include dropdown;
+	font-family: $font-family-base;
+	font-size: $font-size-sm2;
+	border: 1px solid $border-color-light;
+	background: $white;
+}
+
+.ui-state-hover, 
+.ui-widget-content .ui-state-hover, 
+.ui-widget-header .ui-state-hover, 
+.ui-state-focus, 
+.ui-widget-content .ui-state-focus, 
+.ui-widget-header .ui-state-focus {
+	background: $primary;
+	color: $white;
+	font-weight: 400;
+}
+
+#header {
+	
+	#project-jump {
+	
+		&.drdn {
+			height: 3rem;
+			top: 0.5rem;
+			width: calc(100% - 60px);
+			padding: 0.25rem 1rem;
+			left: unset;
+			right: 60px;
+			
+			@include media-breakpoint-up(redmine-mobile) {
+				@include translate-none;
+				height: $input-height-base;
+				padding: 0;
+				right: unset;
+				left: 0;
+				top: 0;
+			}
+		}
+		
+		.drdn-trigger {
+			font-size: $font-size-base;
+			font-weight: 500;
+			
+			@include media-breakpoint-up(redmine-mobile) {
+				font-size: $font-size-sm2;
+				color: $text-color;
+			}
+
+			
+			&:before {
+				content: none;
+			}
+		}
+	}
+}
+
+a.mobile-toggle-button {
+	color: $text-color !important;
+	z-index: $zindex-fixed !important;
+	border-left: 1px solid $border-color-light;
+	height: 63px !important;
+	flex-basis: 60px;
+}
+
+#wrapper {
+	overflow-x: hidden !important;
+	
+	.flyout-menu {
+		background: $link-color;
+	}
+}
+
+.flyout-is-active {
+	
+	#wrapper {
+		overflow-x: visible !important;
+	}
+}
+
+.controller-account.action-login {
+	
+	#login-form {
+		margin-top: 0;
+	}
+	
+	#login-form input#username, 
+	#login-form input#password, 
+	#login-form input#openid_url {
+		height: $input-height-base;
+		max-width: none;
+	}
+}
+
+#wrapper .flyout-menu {
+	
+	.flyout-menu__search {
+		line-height: $line-height-base !important;
+		padding: 0.5rem;
+	}
+	
+	h2, h3 {
+		background: none;
+		border: none;
+		height: auto;
+		margin: 1.75em 0 0.75em 0;
+		position: relative;
+		padding-left: 0;
+		color: $white;
+		font-weight: 500 !important;
+		font-size: 1.5em !important;
+		text-transform: none !important;
+		letter-spacing: normal !important;
+		
+		&:after {
+			content: '';
+			width: 100%;
+			height: 1px;
+			background: $white;
+			position: absolute;
+			bottom: -8px;
+			left: 0;
+			opacity: 0.3;
+		}
+	}
+	
+	ul li a {
+		border: none;
+	}
+	
+	.flyout-menu__avatar {
+		justify-content: center !important;
+		border: none !important;
+		
+		a.user {
+			font-size: 0;
+			color: transparent;
+			flex-grow: 0;
+			height: auto !important;
+			width: auto !important;
+		}
+		
+		&.flyout-menu__avatar--no-avatar a.user {
+			padding: 0;
+		}
+	}
+}
+
+#admin-index #admin-menu {
+	
+	li a {
+		padding: 1rem !important;
+		line-height: $line-height-base !important;
+	}
+}
+
+body.theme-dark {
+	
+	#wrapper3 {
+		
+		.context-menu-selection,
+		.context-menu-selection:hover {
+			background: $table-bg-dark-hover !important;
+			color: $link-color !important;
+			
+			a {
+				color: $link-color !important;
+			}
+		}
+	}
+}
+
+#content .context-menu-selection {
+	background: $table-bg-hover !important;
+	color: inherit !important;
+	
+	a {
+		color: $text-color !important;
+	}
+	
+	a:hover {
+		color: $link-color !important;
+	}
+}

@@ -1,0 +1,141 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.projectino.cz
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+
+/* ==========================================================================
+   Dynamic edit
+   ========================================================================== */
+
+body.controller-issues.action-show {
+	
+	.dynamicEdit {
+		max-width: 60vw;
+		
+		@include media-breakpoint-up(xs) {
+			max-width: none;
+		}
+		
+		.cke_contents {
+			min-height: 200px !important;
+		}
+		
+		.cke_top {
+			display: none !important;		
+		}
+	}
+	
+	.fa-pencil {
+		@include rounded360;
+		border: 1px solid $border-color-light;
+	    padding: 0px 6px 3px 6px;
+	    width: auto;
+		background: $white;
+		opacity: 1 !important;
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			opacity: 0 !important;
+		}
+		
+		&:before {
+			font-size: 12px;
+		}
+	}
+	
+	.fa-pencil:hover {
+		border-color: $primary;
+		background: $primary;
+		
+		&:before {
+			color: $white;
+		}
+	}
+	
+	.issue.details .attributes:hover .fa-pencil,
+	.issue.details .description .fa-pencil  {
+		opacity: 1 !important;
+	}
+	
+	div.issue.details .btn-primary {
+		padding: 3px 16px !important;
+		
+		&.validate {
+			background: $secondary !important;
+			
+			&:hover {
+				background: darken($secondary, 10%) !important;
+			}
+		}
+		
+		&.close {
+			background: none !important;
+			
+			&:hover {
+				background: none !important;
+			}
+			
+			i:before {
+				color: $link-color !important;
+			}
+		}
+	}
+	
+	.issue.details {
+		
+		.showValue {
+			min-width: 75px;
+		}
+		
+		.description {
+			
+			.edited .dynamicEdit{
+				width: 100%;
+				max-width: 950px;
+			}
+			
+			.showValue:hover {
+				cursor: text;
+			}
+		}
+	}
+	
+	
+	.subject .fa-pencil {
+		padding: 0 8px;
+		
+		&:before {
+			position: relative;
+			top: -4px;
+		}
+	}
+}
