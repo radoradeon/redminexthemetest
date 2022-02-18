@@ -1,3 +1,0 @@
-= Easy MindMup
-
-Mind map library compatible with EasyProject and Redmine
