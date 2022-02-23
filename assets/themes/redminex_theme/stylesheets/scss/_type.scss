@@ -1,0 +1,231 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.redmine-x.com
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+ 
+/* ==========================================================================
+   Type
+   ========================================================================== */
+
+body {
+    line-height: $line-height-base;
+    font-weight: 400;
+    font-family: $font-family-base;
+	font-size: $font-size-sm1;
+	text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+	
+	@include media-breakpoint-up(redmine-mobile) {
+		font-size: $font-size-lg;
+	}
+}
+
+b, strong {
+	font-weight: 900;
+}
+
+small, .small {
+	font-size: $font-size-xs;
+}
+
+a {
+	color: $link-color;
+	text-decoration: none;
+	
+	&:hover {
+		color: darken($link-color, 10%);
+	}
+}
+
+p {
+	margin: 0 0 1rem 0;
+}
+
+strong, b {
+	font-weight: 600;
+}
+
+@for $i from 1 through 6 {
+	h#{$i},
+	.h#{$i} {
+		line-height: 1.25;
+		font-weight: 400;
+		margin: 0 0 $heading-margin-bottom 0;
+		font-kerning: normal;
+		letter-spacing: -0.0125em;
+		
+		&:hover a.wiki-anchor {
+			display: inline;
+		}
+	}
+}
+
+#header {
+	
+	&>h1 {
+		
+		.breadcrumbs {
+			font-size: 1rem;
+		}
+		
+		.current-project {
+			display: block;
+		}
+	}
+}
+
+.h1, h1 {
+    font-size: 1.563rem;
+	margin-top: 0.75rem;
+	
+	@include media-breakpoint-up(md) {
+		margin-top: 1.75rem;
+	}
+	
+	@include media-breakpoint-up(redmine-mobile) {
+		margin-top: -1.75rem;
+	}
+	
+	@include media-breakpoint-up(xl) {
+		margin-top: 1.75rem;
+	}
+}
+
+.h2, h2 {
+    font-size: 1.25rem;
+}
+
+.h3, h3  {
+    font-size: 1rem;
+	margin: 0.25rem 0 0.75rem 0;
+}
+
+.flyout-menu {
+	
+	h2, h3 {
+		line-height: 1.25 !important;
+	}
+}
+
+.wiki {
+	
+	h2, h3, h4 {
+		margin-top: 1.75rem;
+	}
+}
+
+#sidebar {
+	
+	h3 {
+		margin-top: 1.25rem;
+	}
+}
+
+#content {
+	
+	&>h2 {
+		margin: 0.5rem 0 1.25rem 0;
+	}
+}
+
+body[class*="project-"] {
+	
+	#content>h2 {
+		
+		@include media-breakpoint-up(xs) {
+			margin-top: 0;
+		}
+	}
+}
+
+.h4, h4,
+.h5, h5,
+.h6, h6 {
+    font-size: 1rem;
+}
+
+hr {
+	visibility: hidden;
+}
+
+.issue .description, 
+#history .wiki {
+	
+	hr {
+		visibility: visible;
+	    border-color: $border-color-light;
+	    border-style: solid;
+	    border-top: none;
+	}
+}
+
+blockquote {
+	font-style: italic;
+}
+
+a.wiki-anchor {
+	display: none;
+	margin-left: 6px;
+	text-decoration: none;
+}
+
+.text-danger {
+	color: $brand-danger;
+}
+
+code, kbd, samp {
+	white-space: normal;
+    word-break: break-word;
+}
+
+code, kbd, samp, pre {
+	font-family: SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+	padding: 0.125rem;
+	background-color: $pre-bg;
+}
+
+pre {
+	@include rounded;
+	margin: 0.5rem;
+	width: auto;
+	overflow-x: auto;
+	overflow-y: hidden;
+	border: 1px solid $border-color-light;
+	margin: 0 0 0.5rem 0;
+}
+
+code {
+	color: $brand-danger;
+	font-size: 87.5%;
+}

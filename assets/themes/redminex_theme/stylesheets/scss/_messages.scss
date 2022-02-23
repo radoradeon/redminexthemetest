@@ -1,0 +1,150 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.redmine-x.com
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+ 
+/* ==========================================================================
+   Messages
+   ========================================================================== */
+
+#main {
+	
+	&:not(.nosidebar) .flash {
+		width: 100%;
+	}
+	
+	&.nosidebar .flash,
+	#sidebar.d-none+#content .flash {
+		width: 100%;
+	}
+}
+
+.warning, 
+#errorExplanation,
+.flash,
+div.banner {
+	@include rounded;
+	padding: 0.5rem 0.5rem 0.5rem 3.5rem !important;
+	margin: 0 0 1rem 0 !important;
+	position: relative;
+	width: 100%;
+	
+	&:before {
+		@extend %fa-icon;
+		@extend .fal;
+		position: absolute;
+		left: 1rem;
+		top: 9px;
+		font-size: $font-size-xl;
+	}
+	
+	p {
+		margin: 0;
+	}
+}
+
+.warning, #errorExplanation {
+	border: none;
+	background: $message-warning;
+	color: $white;
+	
+	&:before {
+		content: fa-content($fa-var-exclamation-triangle);
+		color: $white;
+	}
+}
+
+.nodata {
+	@include rounded;
+	display: block;
+	padding: 1rem;
+	border: 2px dashed $border-color-light;
+	margin-bottom: 1rem;
+}
+
+.nodata:not(.nodata-left):not(.nodata-right) {
+	text-align: center;
+	margin: auto;
+	max-width: 320px;
+}
+
+.nodata-left {
+	text-align: left;
+}
+
+.nodata-right {
+	text-align: right;
+}
+
+.controller-issues.action-new {
+	
+	.nodata {
+		max-width: 1200px;
+		margin: auto;
+	}
+}
+
+#errorExplanation {
+	border: none;
+	background: $message-danger;
+	color: $white;
+	
+	li {
+		list-style: none;
+	}
+}
+
+.flash  {
+	border: none;
+	z-index: $zindex-dropdown;
+	
+	&.notice {
+		background: $message-success;
+		color: $white;
+		
+		&:before {
+			content: fa-content($fa-var-check-circle);
+			color: $white;
+		}
+	}	
+	
+	&.error {
+		background: $message-danger;
+		color: $white;
+		
+		&:before {
+			content: fa-content($fa-var-times-circle);
+			color: $white;
+		}
+	}
+}

@@ -1,0 +1,580 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.redmine-x.com
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+ 
+/* ==========================================================================
+   Dark Theme
+   ========================================================================== */
+
+body.theme-dark {
+	background: $body-bg-dark;
+	color: $body-color-dark;
+	
+	/*
+	 * type.scss
+	 */
+	
+	@for $j from 1 through 6 {
+		h#{$j},
+		.h#{$j} {
+			color: $headings-color-dark;
+			
+			&[class*="icon-"]:before {
+				color: $fa-font-color-dark;
+			}
+		}
+	}
+	
+	#header>h1 {
+		
+		a {
+			color: $link-color;
+			
+			&:hover {
+				color: $text-color;
+			}
+		}
+	}
+	
+	/*
+	 * ui-widget.scss
+	 */
+	 
+	.modal .buttons {
+		border-top: 1px solid $border-color-dark;
+	}
+	
+	/*
+	 * form.scss
+	 */
+	
+	input:not([type="submit"]):not([type="checkbox"]):not([type="radio"]):not([type="file"]):not([type="button"]) {
+		background: $input-bg-dark;
+	}
+	
+	input([type="checkbox"]), 
+	input([type="radio"]) {
+		background: lighten($input-bg-dark, 10%);
+	}
+	
+	textarea {
+		background: $input-bg-dark;
+		border: 1px solid $border-color-dark;
+		color: $text-color-dark;
+	}
+	
+	input[type="text"],
+	input[type="date"],
+	input[type="datetime-local"],
+	input[type="email"],
+	input[type="month"],
+	input[type="number"],
+	input[type="password"],
+	input[type="range"],
+	input[type="search"],
+	input[type="tel"],
+	input[type="time"],
+	input[type="url"],
+	input[type="week"],
+	input[type="text"],
+	input[type="text"],
+	input[type="text"],
+	input[type="text"],
+	select {
+		border: 1px solid $border-color-dark;
+		color: $text-color-dark;
+	}
+	
+	select {	
+		background-color: $input-bg-dark	
+	}
+	
+	#query_form_content,
+	#search-form {
+		
+		select, 
+		input:not([type="submit"]):not([type="file"]):not([type="button"]) {
+			background-color: $body-bg-dark;
+		}
+	}
+	
+	/*
+	 * header.scss
+	 */
+	 
+	.drdn-content {
+		@include dropdown-dark;
+		background: $dropdown-bg-dark;
+		color: $text-color-dark;
+		
+		.projects {
+			
+			a {
+				color: $text-color-dark;
+				
+				&:hover {
+					color: $white;
+				}
+			}
+		}
+		
+		a:hover,
+		a:focus,
+		a:active {
+			color: $white;
+		}
+		
+		.all-projects {
+			border-top: 1px solid darken($border-color-dark, 5%);
+		}
+	}
+	
+	#header, 
+	.flyout-menu {
+		
+		#project-jump {
+			
+			.drdn-trigger {
+			    border: 1px solid $border-color-dark;
+			    color: $headings-color-dark;
+			    background: $input-bg-dark $select-background;
+				background-repeat: no-repeat;
+				background-position: center right;
+			}
+		}
+	}
+	
+	#header {
+		background: $primary-dark;
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			background: none;
+		}
+	}
+	
+	#quick-search {
+		
+		#q,
+		#project-jump .drdn-trigger {
+			background: $input-bg-dark;
+			border: 1px solid $border-color-dark;
+			
+		}
+	}
+	
+	#main-menu,
+	#main-menu2 {
+		
+		a {
+			color: $text-color-dark;
+		}
+	}
+	
+	/*
+	 * layout.scss
+	 */
+	 
+	#sidebar {
+		
+		&.d-none {
+			border: 1px solid $body-bg-dark;
+		}
+	}
+	
+	#hide-sidebar {
+		background: $border-color-dark;
+		color: $headings-color-dark;	
+		
+		&:hover {
+			background: $primary;
+			
+			span {
+				color: $white;
+			}
+		}
+	}
+	
+	/*
+	 * list.scss
+	 */
+	
+	#history .tabs {
+		
+		li a {
+			color: $text-color-dark;
+			background: $body-bg-dark;
+			border: 1px solid $border-color-dark;
+			
+			&.selected,
+			&:hover {
+				background: $primary;
+				color: $white;
+				border-color: $primary;
+			}
+		}
+	}
+	
+	.tabs:not(#main-menu):not(#main-menu2) {
+		
+		ul {
+			border-bottom: 1px solid $border-color-dark;
+		}
+		
+		li a {
+			color: $headings-color-dark;
+			border-bottom-color: $border-color-dark;
+			
+			&.selected,
+			&:hover {
+				border-color: $border-color-dark $border-color-dark $body-bg-dark $border-color-dark;
+			}
+		}
+	}
+	
+	/*
+	 * table.scss
+	 */
+	 
+	.attachments table,
+	table.list {
+		
+		&>tbody {
+			border-right: 1px solid $border-color-dark;
+			border-right: 1px solid $border-color-dark;
+			
+			tr {
+				background: $table-bg-dark;
+				border-bottom: 1px solid $border-color-dark;
+				
+				&:first-child {
+					border-top: 1px solid $border-color-dark;
+				}
+				
+				&:hover {
+					background: $table-bg-dark-hover;
+					
+					table.progress td.todo {
+						background: $border-color-dark;
+					}
+				}
+			}
+		}	
+	}
+	
+	table.progress {
+		
+		td.todo {
+			background: $border-color-dark;
+		}
+	}
+	
+	/*
+	 * general.scss
+	 */
+	
+	#search-form,
+	#query_form_content {
+		background: $query-form-bg-dark;
+		border: 1px solid $border-color-dark;
+	}
+	
+	#query_form_content {
+		
+		fieldset {
+			border-bottom: 1px solid $border-color-dark;
+		}
+	}
+	
+	.version-article,
+	.news-article {
+		border: 1px solid $border-color-dark;
+	}
+	
+	fieldset {
+		border: 1px solid $border-color-dark;
+	}
+	
+	.tooltip span.tip {
+		@include dropdown-dark;
+	    background-color: $input-bg-dark;
+	}
+	
+	#content #context-menu a {
+		color: $text-color-dark;
+	}
+	
+	/*
+	 * activity.scss
+	 */
+	 
+	#activity {
+	
+		dl {
+			border: 1px solid $border-color-dark;
+		}
+	}
+	
+	/*
+	 * admin.scss
+	 */
+	 
+	#admin-index {
+		
+		#admin-menu li {
+			background: $input-bg-dark;
+			
+			&:hover {
+				@include box-shadow-container-hover;
+				border: 1px solid $primary;
+			}
+		}
+	}
+	
+	/*
+	 * calendar.scss
+	 */
+	 
+	 table.cal {
+		border: 1px solid $border-color-dark;
+		
+		thead {
+			
+			th {
+				background-color: $input-bg-dark;
+			}
+			
+			td {
+				border: 1px solid $border-color-dark;
+			}
+		}
+		
+		td {
+	        border: 1px solid $border-color-dark;
+			
+			&:hover {
+				background: $table-bg-dark-hover;
+			}
+	        
+			&.week-number {
+	            background-color: $input-bg-dark;
+	        }
+	        
+			&.odd p.day-num {
+	            color: $text-color-dark;
+	        }
+	        
+			&.today {
+	            background: lighten($brand-yellow, 5%);
+	        }
+	    }
+	}
+	
+	/*
+	 * gantt.scss
+	 */
+	 
+	#gantt_area {
+	
+		&>.gantt_hdr:first-child {
+			background: $border-color-dark !important;
+			border-bottom: 1px solid $border-color-dark;
+		}
+		
+		.gantt_hdr {
+			border-left: none;
+			border-right: 1px solid $border-color-dark;
+		}
+	}
+	
+	.gantt_subjects_container {
+		border-right: 1px solid $border-color-dark;
+		border-bottom: 1px solid $border-color-dark;
+		border-left: 1px solid $border-color-dark;
+		
+		&>.gantt_hdr:first-child {
+			background: $border-color-dark !important;
+		}
+	}
+	
+	/*
+	 * issue.scss
+	 */
+	
+	td.priority {
+		
+		&:before {
+			opacity: 0.5;
+		}
+	}
+	
+	.journal {
+		border: 1px solid $border-color-dark;
+		background: $body-bg-dark;
+		
+		h4 {
+			background: $table-bg-dark;
+			border-bottom: 1px solid $border-color-dark;
+		}
+	}
+	
+	#tab-content-history {
+		
+		.has-notes .journal-actions {
+			border-top: 1px solid $border-color-dark;
+			
+			a {
+				border-right: 1px solid $border-color-dark;
+			}
+		}
+	}
+	
+	#tab-content-time_entries {
+		
+		.contextual {
+			border-top: 1px solid $border-color-dark;
+			
+			a {
+				border-right: 1px solid $border-color-dark;
+				
+				&:hover {
+					background: $border-color-dark;
+				}
+			}
+		}
+	}
+
+	&.controller-issues.action-show {
+		
+		.issue .attributes {
+			
+			.attribute {
+				border-bottom: 1px dashed $border-color-dark;
+			}
+		}
+		
+		#issue_tree,
+		#relations {
+			
+			&>p {
+				border-bottom: 1px dashed $border-color-dark;
+			}
+		}
+	}
+	
+	/* New Issue + Update Issue + Wiki */
+	 
+	.controller-wiki.action-show,
+	.controller-issues.action-new,
+	#update  {
+		
+		.jstEditor textarea {
+			border: 1px solid $border-color-dark;
+			background: $input-bg-dark;
+		}
+	}
+	
+	/*
+	 * login.scss
+	 */
+	 
+	&.controller-account.action-login {
+		
+		#login-form {
+			
+			@include media-breakpoint-up(redmine-mobile) {
+				background: $body-bg-dark;
+			}
+		}
+	}
+	
+	/*
+	 * project.scss
+	 */
+	 
+	#projects-index {
+		
+		&>ul.projects {
+			border-top: 1px solid $border-color-dark;
+			border-bottom: 1px solid $border-color-dark;
+		}
+		
+		div.root { /*div specified because there's li.root*/
+			background: $table-bg-dark;
+			border-bottom: 1px solid $border-color-dark;
+			border-left: 1px solid $border-color-dark;
+			border-right: 1px solid $border-color-dark;
+			
+			&:hover {
+				background: $table-bg-dark-hover;
+			}
+		}
+		
+		&>ul>li:last-child div.root {
+			border-bottom: none;
+		}
+	}
+}
+
+
+body.theme-dark:not(.menu-dark) {
+	
+	/*
+	 * top-menu.scss
+	 */
+	
+	#top-menu {
+		background: $dt-bg-topmenu;
+		
+		&:before {
+			background: $border-color-dark;
+		}
+		
+		&:after {
+			background-image: url(../images/logo-light.svg);
+		}
+		
+		a {
+			color: $text-color-dark;
+			
+			&:before {
+				color: $fa-font-color-dark;
+			}
+			
+			&:hover,
+			&.selected {
+				background: $body-bg-dark;
+			}
+		}
+	}
+}

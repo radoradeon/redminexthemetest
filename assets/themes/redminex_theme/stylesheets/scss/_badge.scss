@@ -1,0 +1,82 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.redmine-x.com
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+
+/* ==========================================================================
+   Badge
+   ========================================================================== */
+
+.badge,
+table.cal a.issue {
+	@include rounded360;
+	display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+	line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+	background: transparent;
+	border: 1px solid transparent;
+}
+
+.badge-private {
+	border-color: $brand-danger;
+	color: $brand-danger;
+}
+
+.badge-count {
+	border-color: $primary;
+	color: $primary;
+}
+
+.badge-status-open {
+	border-color: $brand-success;
+	color: $brand-success;
+}
+
+.badge-status-locked {
+	border-color: $text-color;
+	color: $text-color;
+}
+
+.badge-status-closed {  
+	border-color: $brand-danger;
+	color: $brand-danger;
+}
+
+table.cal a.issue {
+	border-color: $link-color;
+	color: $link-color;
+}

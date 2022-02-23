@@ -1,0 +1,240 @@
+/*!
+ * Projectino
+ * Copyright 2020 RedmineX
+ * For license, see https://www.redmine-x.com
+ * Created by Michael Staněk
+ * Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ */
+
+.controller-my.action-page #header>h1,
+#footer,
+.controller-account.action-login #top-menu,
+.controller-account.action-login #header,
+#quick-search label[for="q"],
+.controller-issues.action-show #content>h2:first-of-type,
+.next-prev-links.contextual,
+.journal .journal-link,
+.edit_issue .filedroplistner .tabular>legend,
+#attachments_form>label:first-of-type {
+    display: none !important;
+}
+
+body:not([class*="project-"]) {
+    /*
+    &.controller-projects.action-index,
+    &.controller-issues.action-index,
+    &.controller-timelog.action-index,
+    &.controller-gantts.action-show,
+    &.controller-easy_gantt.action-index,
+    &.controller-resource_bookings.action-index,
+    &.controller-calendars.action-show,
+    &.controller-news.action-index,
+    &.controller-agile_boards.action-index,
+    &.controller-issues.action-new,
+    &.controller-easy_gantt_resources.action-index,
+    &.controller-activities.action-index,
+    &.controller-operations.action-index,
+    &.controller-deals.action-index,
+    &.controller-contacts.action-index,
+    &.controller-holidays.action-index,
+    &.controller-calendar.action-index,
+    &.controller-redmine_x_gantt.action-index,
+    &.controller-redminex_gantt.action-index,
+    &.controller-agile_colors.action-index,
+    &.controller-search.action-index,
+    &.controller-invoice_templates.action-new {
+
+        #main-menu,
+        #main-menu2 {
+            display: none !important;
+        }
+    }
+    */
+
+    #main-menu,
+    #main-menu2 {
+        display: none !important;
+    }
+
+    #header {
+        padding: 0;
+
+        &>h1 {
+            @media only screen and (min-width: 899px) {
+                display: none !important;
+            }
+        }
+    }
+}
+
+.controller-my.action-page {
+
+    #content>.contextual {
+        @media only screen and (max-width: 899px) {
+            display: none;
+        }
+    }
+
+    .contextual {
+
+        .icon-sort-handle,
+        .icon-settings,
+        .icon-close {
+            @media only screen and (max-width: 899px) {
+                display: none;
+            }
+        }
+    }
+
+    #block-starting_with_projectino iframe {
+        width: 100% !important;
+    }
+}
+
+.controller-issues.action-show {
+
+    .issue {
+
+        .subject>div>p {
+            display: none !important;
+        }
+    }
+	
+	 #wrapper3 #content>.contextual {
+	 	margin-bottom: 0.5rem !important;
+
+         @media only screen and (min-width: 1200px) {
+            margin-top: 1rem !important;
+        }
+	 }
+}
+
+#main-menu,
+#main-menu2 {
+
+    #new-object {
+        display: none;
+    }
+}
+
+.controller-versions {
+
+    #content>.contextual>.drdn {
+        display: none;
+    }
+}
+
+.controller-agile_boards {
+
+    &.action-index {
+
+        #sidebar {
+
+            &>h3:first-of-type,
+            &>ul:first-of-type {
+                display: none;
+            }
+        }
+    }
+}
+
+.controller-projects.action-show {
+
+    .box {
+        &.spent_time {
+            display: none !important;
+        }
+    }
+
+    .splitcontentright {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+}
+
+#chat-application {
+    max-height: 600px;
+    max-width: 366px;
+    height: calc(100vh - 36px);
+    width: 366px;
+    display: none !important;
+	
+	&.d-block {
+		@media only screen and (min-width: 899px) {
+			display: block !important;
+		}
+	}
+}
+
+table.list.issues {
+
+    .id {
+        display: none !important;
+    }
+}
+
+#tab-content-display .box.tabular.settings p:first-child {
+	display: none !important;
+}
+
+#admin-menu li:nth-last-child(-n+2) {
+	display: none !important;
+}
+
+.starting-block-box {
+	display: flex;
+	flex-direction: column;
+	
+	@media only screen and (min-width: 768px) {
+        flex-direction: row;
+    }
+}
+
+.starting-block-video {
+	flex: 0 0 100%;
+	
+	@media only screen and (min-width: 768px) {
+        flex: 0 0 50%;
+    }
+	
+	@media only screen and (min-width: 1200px) {
+        flex: 0 0 33%;
+    }	
+}
+
+.starting-block-text {
+	flex: 0 0 100%;	
+	padding: 0 2rem;
+	
+	@media only screen and (min-width: 768px) {
+        flex: 0 0 50%;
+    }
+	
+	@media only screen and (min-width: 1200px) {
+        flex: 0 0 66%;	
+    }	
+	
+	ul {
+		margin-bottom: 1rem;
+	}
+	
+	.gravatar {
+		float: left;
+		margin-right: 0.5rem;
+	}
+}
+
+.controller-settings.action-plugin #content>h2 {
+	display: none;
+}
+
+body:not([class*="project-"]) {
+	
+	&.controller-redmine_x_gantt,
+	&.controller-redmine_x_resources {
+		
+		#content {
+			padding-top: 1rem !important;
+		}
+	}
+}

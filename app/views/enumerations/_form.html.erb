@@ -1,0 +1,25 @@
+<%= error_messages_for 'enumeration' %>
+<script>
+    $(document).ready(function() {
+        $("#enumeration_position_name").select2({
+            minimumResultsForSearch: -1,
+        });
+        $('b[role="presentation"]').hide();
+    });
+</script>
+<div class="box tabular">
+  <p><%= f.text_field :name %></p>
+  <p><%= f.check_box :active %></p>
+  <p><%= f.check_box :is_default %></p>
+  <%if  @enumeration.type == "IssuePriority"%>
+    <p id="issue-priority-color">
+      <%= f.select :position_name, options_for_select(@enumeration.priority_options, @enumeration.position_name), label: l(:color_label)%>
+    </p>
+  <%end %>
+  <% @enumeration.custom_field_values.each do |value| %>
+    <p><%= custom_field_tag_with_label :enumeration, value %></p>
+  <% end %>
+</div>
+<% content_for :header_tags do %>
+  <%= stylesheet_link_tag 'projectino_color_selector', plugin: '000_redmine_x_ux_upgrade' %>
+<% end %>

@@ -1,0 +1,507 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.redmine-x.com
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+
+/* ==========================================================================
+   Layout
+   ========================================================================== */
+
+/* width */
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $gray-200; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  @include rounded360;
+  background: $gray-300; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $gray-400; 
+}
+
+/* box-sizing defined in normalize-css */
+
+body, html {
+	min-height: 90vh;
+}
+
+body:not(.action-login) {
+	
+	@include media-breakpoint-up(redmine-mobile) {
+		padding-top: 53px;
+	}
+}
+
+#wrapper, 
+#wrapper2, 
+#wrapper3 {
+	min-height: inherit;
+}
+
+#wrapper3 {
+	display: flex;
+    flex: 1 1 auto;
+	flex-direction: column;
+	min-height: 90vh;
+}
+
+.flyout-is-active #actionbar {
+	right: calc(#{$flyout-menu-width} + 0.5rem)
+}
+
+#actionbar {
+	position: fixed;
+	bottom: 0.5rem;
+	right: 0.5rem;
+	z-index: $zindex-sticky;
+	
+	@include media-breakpoint-up(redmine-mobile) {
+		top: 0;
+		right: 0;
+		bottom: unset;
+		z-index: $zindex-modal-backdrop;
+	}
+	
+	li {
+		list-style: none;
+	}
+	
+	#new-entity {
+		border-radius: $border-radius;
+		background: $secondary;
+		color: $white;
+		padding: 16px;
+		width: 53px;
+		height: 52px;
+		display: block;
+		text-align: center;
+		font-size: 0;
+		z-index: $zindex-fixed;
+		position: relative;
+		
+		&:before {
+			@extend %fa-icon;
+			@extend .fal;
+			content: fa-content($fa-var-plus);
+			font-size: $font-size-xl;
+			color: $white;
+			display: block;
+			margin: 0;
+		}
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			box-shadow: none;
+			border-radius: 0;
+		}
+		
+		&:hover {
+			cursor: pointer;
+			background: darken($secondary, 10%);
+		}
+	}
+	
+	.menu-children {
+		bottom: 57px;
+		right: 0;
+		background: $secondary;
+		padding: 2rem 1rem !important;
+		width: 233px;
+		z-index: $zindex-sticky;
+		top: unset;
+		border-top-right-radius: 0;
+		animation: growOut 200ms ease-in-out forwards;
+		transform-origin: top right;
+		
+		@keyframes growOut {
+			0% {
+			transform: scale(0)
+			}
+			80% {
+			transform: scale(1.1)
+			}
+			100% {
+			transform: scale(1)
+			}
+		}
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			top: 52px;
+			bottom: unset;
+		}
+		
+		a {
+			color: $white;
+			
+			&:hover {
+				background: rgba($black, .125);
+			}
+		}
+		
+		&.open {
+			display: block;
+		}
+	}
+}
+
+/*
+ * Header
+ */
+
+#header {
+	display: flex;
+	flex-direction: row-reverse;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+	position: static !important;
+	margin: 0;
+	background: none;
+	height: auto !important;
+	background: none !important;
+	padding: 0 3rem;
+	border-top: 1px solid $border-color-light;
+	
+	@include media-breakpoint-up(redmine-mobile) {
+		flex-direction: column;
+		align-items: flex-start;
+		position: relative;
+		border-top: none;
+	}
+	
+	&:before {
+		content: '';
+		background: $white;
+		width: 100%;
+		height: 64px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		border-bottom: 1px solid $border-color-light;
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			content: none;
+		}
+	}
+}
+
+#quick-search {
+	z-index: $zindex-fixed;
+	flex-basis: calc(100% - 125px);
+	margin-left: auto;
+	z-index: $zindex-sticky;
+	
+	@include media-breakpoint-up(xl) {
+		position: fixed;
+		top: 0;
+		right: 4rem;
+		margin: 0;
+		z-index: $zindex-fixed;
+	}
+}
+
+#main-menu,
+#main-menu2 {
+	flex: 0 0 100%;
+}
+
+/*
+ * Main, Content, Sidebar
+ */
+
+#header, 
+#main  {
+	padding: 0 1rem;
+	width: 100%;
+	max-width: 2480px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#main {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: flex-end;
+	align-items: flex-start;
+	flex-grow: 1;
+	align-items: stretch;
+	padding: 0 0.5rem !important;
+	
+	@include media-breakpoint-up(redmine-mobile) {
+		padding: 0 1rem 3rem 1rem !important;
+	}
+	
+	&.nosidebar {
+		
+		#sidebar,
+		#hide-sidebar {
+			display: none;
+		}
+		
+		#content {
+			border-right-width: 0;
+		}
+	}	
+}
+
+#sidebar {
+	flex: 0 0 260px;
+	min-width: 0px;
+	position: relative;
+	padding: 0 2rem 3rem 4rem;
+	margin-left: auto;
+	
+	@include media-breakpoint-up(xl) {
+		flex: 0 0 320px;
+	}
+	
+	&.d-none {
+		flex: 0 0 0px !important;
+		padding: 0;
+		
+		&>*:not(#hide-sidebar) {
+			display: none;
+		}
+	}
+	
+	ul {
+		padding-left: 0;
+		margin-bottom: 1rem !important;
+		
+		li {
+			list-style: none;
+			display: block;
+			clear: both;
+		}
+	}
+	
+	#watchers {
+		margin-top: 2rem;
+		
+		&>.contextual {
+			float: right;
+			
+			&>a {
+				margin: -0.5rem 0 0.5rem 0;
+			}
+		}
+	}
+}
+
+#content {
+	flex: auto;
+	min-width: 0px;
+	min-height: 400px;
+	padding-bottom: 3rem;
+	
+	@include media-breakpoint-up(redmine-mobile) {
+		padding: 0.5rem 0 3rem 0;
+	}
+}
+
+body:not([class*="project-"]) {
+	
+	#content {
+		padding-top: 2rem !important;
+		
+		&>h2 {
+			@include media-breakpoint-up(xs) {
+				margin-top: 0 !important;
+			}
+		}
+	}
+}
+
+#hide-sidebar {
+	@include translate-vertical;
+	border-radius: $border-radius 0 0 $border-radius;
+	position: fixed;
+	right: 0;
+	top: 50%;
+	padding: 7px;
+	display: none;
+	width: 16px;
+	height: 120px;
+	z-index: $zindex-sticky;
+	
+	@include media-breakpoint-up(redmine-mobile) {
+		display: block;
+	}
+	
+	.far:before {
+		font-size: $font-size-xs;
+	}
+	
+	span {
+		display: block;
+		margin: 0;
+		transform: rotate(-45deg);
+		position: absolute;
+		left: 3px;
+		top: 42%;
+	}
+	
+	&:hover {
+		background: $primary !important; // to override theme light/dark
+		
+		.far:before {
+			color: $white;
+		}
+	}
+}
+
+#sidebar.d-none #hide-sidebar {
+	
+	span {
+		transform: rotate(0deg);
+	}
+}
+
+
+#footer {
+	margin: auto auto 0 auto;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.flyout-menu {	
+	padding: 0 1rem !important;
+	
+	#top-menu-hamburger {
+		padding: 0;
+		margin-bottom: 2rem;
+	}
+	
+	.menu-children a.selected {
+		background: none !important;
+		color: $primary !important;
+	}
+	
+	a, p, span span {
+		padding: 0 0.5rem !important;
+	}
+	
+	#watchers .contextual a {
+		color: $white !important;
+	}
+	
+	a {
+		@include rounded;
+		
+		&:active, 
+		&:focus {
+			outline: none;
+		}
+		
+		&.selected {
+			color: $white;
+			background: rgba($black, .125);
+		}
+	}
+	
+	li.expanded-menu {
+		
+		.menu-children {
+			position: static;
+			display: block;
+			background: none;
+			padding: 0 !important;
+			
+			a {
+				color: $white;
+			}
+		}
+	}
+	
+	a.expanded-menu {
+		display: none;
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			display: flex !important;
+		}
+	}
+	
+	#project-jump {
+	
+		&.drdn {
+			height: 2.5rem;
+			width: 100%;
+			padding: 0;
+			position: static;
+			
+			a {
+				margin: 0.5rem 0;
+			}
+		}
+		
+		.drdn-trigger {
+			font-size: $font-size-base;
+			font-weight: 500;
+			padding: 7px;
+			
+			@include media-breakpoint-up(redmine-mobile) {
+				font-size: $font-size-sm2;
+				color: $text-color;
+			}
+
+			
+			&:before {
+				content: none;
+			}
+		}
+		
+		.drdn-content {
+			left: 25px !important;
+			width: 80% !important;
+		}
+	}
+	
+	#admin-menu li a {
+		@media (max-width: 899px) {
+			padding-left: 0.5rem !important;
+		}
+	}
+}
+
+#flyout-search {
+	text-align: center;
+}

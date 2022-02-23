@@ -1,0 +1,143 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.projectino.cz
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+
+/* ==========================================================================
+   Gantt + Resouces Plugins
+   ========================================================================== */
+
+.controller-gantts,
+.controller-resource_bookings {
+	
+	.icon-zoom-in, 
+	.icon-zoom-out {
+		@include btn;
+		@include btn-tetriary;
+	}
+	
+	#query_form #query_form_with_buttons {
+		
+		&>.buttons {
+			margin-top: 1rem;
+		}
+	}
+		
+	#query_form_with_buttons {
+		
+		.contextual {
+			margin-top: 1rem !important;
+			
+			&>span {
+				margin-left: 1rem;
+			}
+		}
+		
+		#options {
+			
+			fieldset legend {
+				border-bottom: 1px solid $border-color-light;
+				float: left;
+				display: block;
+				margin: 0 1rem 0 0;
+			}
+			
+			label[for="draw_selected_columns"] {
+				margin-bottom: 0.5rem;
+				display: block;
+			}
+		}
+	}
+	
+	#months {
+		max-width: 80px;
+	}
+	
+	#month,
+	#year {
+		max-width: 90px;
+	}
+}
+
+.resource-planning-chart {
+	background: $table-bg;
+		
+	&>tbody>tr>td {
+		padding: 0 !important;
+	}
+	
+	.user {
+		font-size: $font-size-sm1;
+	}
+	
+	.user-subject {
+		padding: 0.25rem !important;
+		
+		.gravatar {
+			top: 0;
+			margin: 0;
+		}
+	}
+	
+	.user-subject,
+	.user-line {
+		height: 33px !important;
+	}
+	
+	.task {
+		@include rounded;
+		line-height: 10px !important;
+	}
+	
+	/***** Styles of the chart "Resource planning" *****/
+	.red_bar { 
+		background: $brand-danger !important;
+		border: 1px solid $brand-danger !important; 
+	}
+	
+	.yellow_bar { 
+		background: $brand-warning !important;
+		border: 1px solid $brand-warning !important;  
+	}
+	
+	.green_bar { 
+		background: $brand-success !important;
+		border: 1px solid $brand-success !important;  
+	}
+	
+	.task_done {
+		background: $brand-info !important;
+		border: 1px solid $brand-info !important;
+	}
+
+}

@@ -1,0 +1,171 @@
+<%= labelled_fields_for :issue, @issue do |f| %>
+<%= call_hook(:view_issues_form_details_top, { :issue => @issue, :form => f }) %>
+<%= hidden_field_tag 'form_update_triggered_by', '' %>
+<%= hidden_field_tag 'back_url', params[:back_url], :id => nil if params[:back_url].present? %>
+
+<!-- CHANGE splitcontent divs added -->
+<div class="splitcontent">
+    <div class="splitcontentleft">
+        <!-- CHANGE order of items changed according to projectino plugin -->
+        <% if @issue.safe_attribute? 'subject' %>
+        <p><%= f.text_field :subject, :size => 80, :maxlength => 255, :required => true %></p>
+        <% end %>
+
+        <% if @issue.safe_attribute?('status_id') && @allowed_statuses.present? %>
+        <p>
+          <%= f.select :status_id, (@allowed_statuses.collect {|p| [p.name, p.id]}), {:required => true},
+                        :onchange => "updateIssueFrom('#{escape_javascript(update_issue_form_path(@project, @issue))}', this)" %>
+          <% if @issue.transition_warning %>
+            <span class="icon-only icon-warning" title="<%= @issue.transition_warning %>"><%= @issue.transition_warning %></span>
+          <% end %>
+        </p>
+        <%= hidden_field_tag 'was_default_status', @issue.status_id, :id => nil if @issue.status == @issue.default_status %>
+        <% else %>
+        <p><label><%= l(:field_status) %></label> <%= @issue.status %></p>
+        <% end %>
+
+        <% if @issue.safe_attribute? 'priority_id' %>
+        <p><%= f.select :priority_id, (@priorities.collect {|p| [p.name, p.id]}), {:required => true} %></p>
+        <% end %>
+
+        <!-- CHANGE assigned_to_id moved here from _attributes.html.erb -->
+        <% if @issue.safe_attribute? 'assigned_to_id' %>
+        <p>
+          <%= f.select :assigned_to_id, principals_options_for_select(@issue.assignable_users, @issue.assigned_to),
+                          :include_blank => true, :required => @issue.required_attribute?('assigned_to_id') %>
+          <% if @issue.assignable_users.include?(User.current) %>
+            <a class="assign-to-me-link<%= ' hidden' if @issue.assigned_to_id == User.current.id %>" href="#" data-id="<%= User.current.id %>"><%= l(:label_assign_to_me) %></a>
+          <% end %>
+        </p>
+        <% end %>
+
+        <!-- CHANGE is_private moved to _attributes.html.erb -->
+    </div>
+    <!-- splitcontentright div added to include some items from _attributes.html.erb -->
+    <div class="splitcontentright">
+
+        <!-- CHANGE Project drop down is now always visible, is user is in the project, this project is preselected -->
+        <% projects = projects_for_select(@issue) %>
+        <% if (@issue.safe_attribute?('project_id') || @issue.project_id_changed?) #&& (@project.nil? || projects.length > 1 || @issue.copy?) %>
+        <p><%= f.select :project_id, project_tree_options_for_select(projects, :selected => @issue.project), {:required => true},
+                        :onchange => "updateIssueFrom('#{escape_javascript update_issue_form_path(@project, @issue)}', this)" %></p>
+        <% end %>
+
+        <% if @issue.safe_attribute?('tracker_id') || (@issue.persisted? && @issue.tracker_id_changed?) %>
+        <p>
+          <%= f.select :tracker_id, trackers_options_for_select(@issue), {:required => true},
+                       :onchange => "updateIssueFrom('#{escape_javascript update_issue_form_path(@project, @issue)}', this)",
+                       :title => @issue.tracker.description %>
+          <%= content_tag 'a', l(:label_open_trackers_description), :class => 'icon-only icon-help', :title => l(:label_open_trackers_description), :onclick => "showModal('trackers_description', '500px'); return false;", :href => '#' if trackers_for_select(@issue).any? {|t| t.description.present? } %>
+        </p>
+          <%= render partial: 'issues/trackers_description', locals: {trackers: trackers_for_select(@issue)} %>
+        <% end %>
+
+        <% if @issue.safe_attribute? 'start_date' %>
+        <p id="start_date_area">
+          <%= f.date_field(:start_date, :size => 10, :required => @issue.required_attribute?('start_date')) %>
+          <%= calendar_for('issue_start_date') %>
+        </p>
+        <% end %>
+
+        <% if @issue.safe_attribute? 'due_date' %>
+        <p id="due_date_area">
+          <%= f.date_field(:due_date, :size => 10, :required => @issue.required_attribute?('due_date')) %>
+          <%= calendar_for('issue_due_date') %>
+        </p>
+        <% end %>
+
+        <% if @issue.safe_attribute? 'estimated_hours' %>
+        <p><%= f.hours_field :estimated_hours, :size => 3, :required => @issue.required_attribute?('estimated_hours') %> <%= l(:field_hours) %></p>
+        <% end %>
+    </div>
+</div>
+
+<% @issue_description_edit_id = @issue.safe_attribute?('project_id') && @issue.safe_attribute?('tracker_id') &&
+                                @issue.safe_attribute?('start_date') && @issue.safe_attribute?('due_date') &&
+                                @issue.safe_attribute?('estimated_hours') && (not @issue.new_record?)
+%>
+<% if @issue.safe_attribute? 'description' %>
+  <%= content_tag :p, id: (@issue_description_edit_id ? 'issue_description_edit' : nil) do %>
+    <%= f.label_for_field :description, :required => @issue.required_attribute?('description') %>
+    <%= link_to_function content_tag(:span, l(:button_edit), :class => 'icon icon-edit'), '$(this).hide(); $("#issue_description_and_toolbar").show()' unless @issue.new_record? %>
+    <%= content_tag 'span', :id => "issue_description_and_toolbar", :style => (@issue.new_record? ? nil : 'display:none') do %>
+      <%= f.text_area :description, :cols => 60, :accesskey => accesskey(:edit), :class => 'wiki-edit',
+                    :rows => [[10, @issue.description.to_s.length / 50].max, 20].min,
+                    :data => {
+                        :auto_complete => true
+                    },
+                    :no_label => true %>
+    <% end %>
+  <% end %>
+  <%= wikitoolbar_for 'issue_description', preview_issue_path(:project_id => @issue.project, :issue_id => @issue.id) %>
+<% end %>
+
+<!-- CHANGE attachment is moved here from new.html.erb -->
+<!-- Only for new issues -->
+<% unless @issue.id %>
+    <fieldset class="files">
+    <legend><%= l(:label_attachment_plural) %></legend>
+
+        <% if @issue.attachments.any? && @issue.safe_attribute?('deleted_attachment_ids') %>
+          <div class="contextual"><%= link_to l(:label_edit_attachments), '#', :onclick => "$('#existing-attachments').toggle(); return false;", :class => "icon-only icon-edit" %></div>
+          <div id="existing-attachments" style="<%= @issue.deleted_attachment_ids.blank? ? 'display:none;' : '' %>">
+            <% @issue.attachments.each do |attachment| %>
+            <span class="existing-attachment">
+              <%= text_field_tag '', attachment.filename, :class => "icon icon-attachment filename", :disabled => true %>
+              <label>
+                <%= check_box_tag 'issue[deleted_attachment_ids][]',
+                                  attachment.id,
+                                  @issue.deleted_attachment_ids.include?(attachment.id),
+                                  :id => nil, :class => "deleted_attachment" %> <%= l(:button_delete) %>
+              </label>
+            </span>
+            <% end %>
+            <hr />
+          </div>
+        <% end %>
+
+        <div id="new-attachments" style="display:inline-block;">
+          <%= render :partial => 'attachments/form', :locals => {:container => @issue} %>
+        </div>
+
+    </fieldset>
+<% end %>
+
+<div id="attributes" class="attributes">
+  <%= render :partial => 'issues/attributes' %>
+</div>
+
+<!-- call_hook :view_issues_form_details_bottom moved to _attributes.html.erb -->
+<% end %>
+
+<% heads_for_wiki_formatter %>
+<%= heads_for_auto_complete(@issue.project) %>
+
+<%= javascript_tag do %>
+$(document).ready(function(){
+  $("#issue_tracker_id, #issue_status_id").each(function(){
+    $(this).val($(this).find("option[selected=selected]").val());
+  });
+  $(".assign-to-me-link").click(function(event){
+    event.preventDefault();
+    var element = $(event.target);
+    $('#issue_assigned_to_id').val(element.data('id'));
+    element.hide();
+  });
+  $('#issue_assigned_to_id').change(function(event){
+    var assign_to_me_link = $(".assign-to-me-link");
+
+    if (assign_to_me_link.length > 0) {
+      var user_id = $(event.target).val();
+      var current_user_id = assign_to_me_link.data('id');
+
+      if (user_id == current_user_id) {
+        assign_to_me_link.hide();
+      } else {
+        assign_to_me_link.show();
+      }
+    }
+  });
+});
+<% end %>

@@ -1,0 +1,1168 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.redmine-x.com
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+
+/* ==========================================================================
+   Gereal styles for multiple views
+   ========================================================================== */
+
+body[class*="project-"] {
+	
+	#header h1 {
+		display: flex !important;
+		flex: 0 0 100%;
+		padding: 0 0.5rem;
+		flex-direction: column;
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			padding: 0;
+		}
+	}
+}
+
+.menu-children {
+	@include dropdown;
+	background: $white;
+	display: none;
+	position: absolute;
+	top: 52px;
+	padding: 0.5rem !important;
+	min-width: 200px;
+	
+	&.visible,
+	&.open {
+		display: block !important;
+	}
+	
+	li {
+		list-style: none;
+	}
+	
+	a {
+		@include rounded;
+		padding: 0.4rem 1rem;
+		margin: 2px 0;
+		display: block;
+	}
+}
+
+body:not(.controller-projects.action-show) {
+	
+	#content>.contextual>.icon-edit {
+		@include btn-primary;
+	}
+}
+
+body.controller-projects.action-show {
+	
+	#content>.contextual>.icon-edit {
+		@include btn-tetriary;
+	}
+}
+
+#content {
+	
+	&>.contextual {
+		
+		label[for="closed"] {
+			margin-right: 0.5rem;
+		}
+		
+		.icon-actions {
+			padding: 0 1rem;
+			display: inline-block;
+		}
+	}
+	
+	&>.contextual {
+		
+		&>.icon {
+			@include btn;
+			margin: 0;
+			
+			@include media-breakpoint-down(xs) {
+				padding: .375rem 0.5rem !important;
+			}
+			
+			@include media-breakpoint-up(xs) {
+				margin: 0 0.5rem;
+			}
+			
+			&.icon-preview {
+				display: none;
+				
+				@include media-breakpoint-up(xs) {
+					display: inline-block;
+				}
+			}
+		}
+		
+		&>.icon:not(.icon-edit):not(.icon-add) {
+			@include btn-tetriary;		
+		}
+		
+		&>.icon-add,
+		.drdn-trigger .icon-add{
+			@include btn-secondary;
+			
+			&:before {
+				color: $white !important;
+			}
+		}
+		
+		#issue-action-dropdown-trigger {
+			@include btn;
+			color: $text-color;
+			padding-left: 1.25rem;
+			
+			@include media-breakpoint-up(xs) {
+				padding-left: 1.5rem;
+				padding-right: 2rem;
+			}
+			
+			&:hover {
+				color: $link-color;
+			}
+		}
+	}
+	
+	&>.contextual span.drdn {
+		padding: 0 0.5rem;
+		border: none;
+	}
+	
+	#context-menu {
+		min-width: 250px;
+		z-index: $zindex-dropdown;
+		
+		ul {
+			@include dropdown;
+			padding: 0.5rem;
+			width: 100%;
+		}
+		
+		a[class*="icon-"] {
+			background-image: none !important;
+		}
+		
+		a, 
+		a.submenu {
+			padding: 0.375rem 0.5rem;
+			font-size: $font-size-sm2;
+		}
+		
+		a.submenu {
+			background-position-x: 90%;
+		}
+		
+		li {
+			@include rounded;
+			border: none;
+		}
+		
+		li:hover {
+			border: none;
+			background: lighten($tetriary, 7%);
+			color: $text-color;
+			
+			&>a {
+				color: $text-color;
+			}
+		}
+	}
+}
+
+#search-form,
+#query_form_content {
+	@include rounded;
+}
+
+#query_form_content {
+	
+	#filters-table td.field {
+		min-width: 100px;
+	}
+	
+	label[for="add_filter_select"] {
+		min-width: 85px;
+	}
+	
+	#filters-table {
+		
+		.toggle-multiselect {
+			@include translate-vertical;
+			position: absolute;
+		    top: 50%;
+		    right: -30px;
+		    width: 16px;
+		    height: 16px;
+		}
+	}
+	
+	fieldset {
+		border-top: none;
+		border-right: none;
+		border-left: none;
+		padding: 0 1rem;
+		
+		&.collapsible > legend {
+			width: 100%;
+		}
+		
+		&:last-child {
+			border-bottom: none;
+			margin-bottom: 0;
+			
+			&>div {
+				padding: 1rem;
+			}
+		}
+	}
+}
+
+fieldset {
+	@include rounded;
+	margin: 0;
+	padding: 0.5rem 1rem 1rem 1rem;
+	
+	&.collapsible > legend {
+		padding: 0.5rem;
+		display: block;
+		
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	
+	.icon-checked:before {
+		margin: 0 0.5rem;
+	}
+}
+
+fieldset:not(#filters):not(#options):not(.collapsible) {
+	padding: 1rem !important;
+	border: 1px solid $border-color-light;
+	
+	&.files {
+		padding-top: 0 !important;
+		border: none;
+	}
+}
+
+#query_form_with_buttons,
+.filters #query_form {
+	
+	fieldset {
+		padding: 0 1rem;
+		background: none;
+	}
+}
+
+.contextual {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	width: auto !important;
+	margin: 0 !important;
+	
+	@include media-breakpoint-up(xs) {
+		justify-content: flex-end;
+	}
+	
+	@include media-breakpoint-up(xl) {
+		float: right;
+		position: relative;
+	}
+	
+	.drdn-content {
+		@include dropdown;
+		width: auto;
+		padding: 0.5rem;
+	}
+	
+	.drdn-items {
+		text-align: right;
+	}
+}
+
+.contextual:not(.mypage-box .contextual) {
+	
+	@include media-breakpoint-up(xl) {
+		z-index: 700;
+	}
+}
+
+#query_form {
+	position: relative;
+	
+	p.buttons {
+		margin-top: 0.5rem;
+	}
+	
+	#query_form_with_buttons>.buttons,
+	#query_form_content+.buttons {
+		
+		a:not(.icon-checked) {
+			@include btn; 
+			@include btn-tetriary;
+		}
+		
+		.icon-checked {
+			@include btn;
+			@include btn-primary;
+		}
+	}
+	
+	.tabs+p {
+		margin-top: 1rem;
+		
+		&* {
+			display: inline-block;
+		}
+		
+		select {
+			max-width: 200px;
+			display: inline-block;
+		}
+		
+		label:nth-of-type(2) {
+			margin-left: 1rem;
+		}
+		
+		#columns,
+		#criterias {
+			max-width: 90px;
+		}
+	}
+}
+
+.filters #query_form {
+	margin-top: 0.5rem;
+	
+	a:not(.icon-checked) {
+		@include btn; 
+		@include btn-tetriary;
+	}
+	
+	.icon-checked {
+		@include btn;
+		@include btn-primary;
+	}
+}
+
+.query-columns {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	justify-content: flex-start;
+	
+	span:not(.buttons) {
+		
+		@include media-breakpoint-up(xl) {
+			min-width: 334px;
+		}
+	}
+	
+	input[type=button] {
+		@include rounded;
+		width: 3rem;
+		margin: 0 0.125rem;
+		font-family: sans-serif;
+		padding: 0.5rem;
+		background: $gray-100;
+		color: $black;
+		border: 1px solid $border-color-light;
+		
+		&:hover {
+			background: $primary;
+			color: $white;
+		}
+	}
+	
+	.buttons {
+		display: flex;
+		flex-direction: column;
+		flex-wrap: nowrap;
+		
+		@include media-breakpoint-up(hd) {
+			flex-direction: row-reverse;
+		}
+	}
+}
+
+.subject h3 {
+	font-size: 1.563em;
+	margin: 0 0 0.25em 0;
+}
+
+#options {
+	
+	input[type="radio"] {
+		margin-right: 0.25rem;
+		margin-left: 0.5rem;
+	}
+	
+	#group_by {
+		max-width: 300px;
+	}
+}
+
+.add-filter {
+	position: relative;
+	width: 100% !important;
+    margin: 1rem;
+	
+	&>* {
+		display: inline-block;
+	}
+	
+	&:before {
+		@include translate-vertical;
+		content: "+";
+		margin-right: 0.5rem;
+		font-weight: 700;
+		font-size: 1rem;
+		color: darken($border-color-light, 10%);
+		position: absolute;
+		top: 45%;
+		left: -1rem;
+	}
+	
+	label {
+		min-width: 60px;
+	}
+}
+
+.pagination,
+.other-formats {
+	font-size: $font-size-xs;
+	color: $text-color-light;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 0.5rem;
+}
+
+.pagination {
+	@include media-breakpoint-up(redmine-mobile) {
+		float: left;
+	}
+}
+
+.other-formats {	
+	@include media-breakpoint-up(redmine-mobile) {
+		float: right;
+	}
+	
+	span:first-child {
+		margin-left: 0.5rem;
+	}
+	
+	a {
+		@include btn;
+		@include btn-tetriary;
+		margin-right: 0.5rem;
+	}
+}
+
+.pagination {
+	
+	ul {
+		display: flex;
+		justify-content: center;
+		
+		li>span {
+			@include btn;
+		}
+		
+		a, 
+		.previous span,
+		.next span {
+			@include btn;
+			@include btn-tetriary;
+		}
+		
+		.previous,
+		.next {
+			min-width: 120px;
+		}
+	}
+	
+	li {
+		list-style: none;
+		margin-right: 0.5rem;
+	}
+	
+	.per-page {
+		
+		span, a {
+			margin-left: 0.5rem;
+		}
+		
+		a {
+			margin-right: 0.25rem;
+		}
+	}
+}
+
+span.icon-user.my-project {
+	padding: 1rem 2rem 1rem 1rem;
+	display: block;
+}
+
+.issue-report + p {
+	margin: 0.25rem 0 0 0;
+}
+
+.tabular {
+	
+	input:not([type="checkbox"]):not([type="radio"]):not(.edit-box):not([type="submit"]):not([class*="move-"]), 
+	select:not(#issue_fixed_version_id), 
+	textarea {
+		width: 100%;
+	}
+	
+	#issue_parent_issue_id {
+		width: 96% !important;
+	}
+	
+	#issue_category_id {
+		@include media-breakpoint-up(xl) {
+			margin-right: 0.5rem;
+			max-width: calc(100% - 140px) !important;
+		}
+	}
+	
+	#issue_fixed_version_id,
+	.checklist-item .edit-box {
+		width: 85% !important;
+	}
+	
+	&.box {
+		padding: 1rem;
+		
+		@include media-breakpoint-up(sm) {
+			padding: 2rem 3rem 2rem 1rem;
+		}
+	}
+	
+	.attribute,	p {		
+		display: block;
+		clear: both;
+		
+		&.hidden {
+			display: none;
+		}
+		
+		@include media-breakpoint-up(xs) {
+			padding-left: 120px !important;			
+		}
+		
+		@include media-breakpoint-up(md) {
+			padding-left: 170px !important;			
+		}
+	
+		&>label:first-child {
+			display: block;
+			cursor: pointer;
+			
+			@include media-breakpoint-up(xs) {
+				float: left;
+				text-align: right;
+				vertical-align: middle;	
+				margin-left: -110px;
+				width: 100px;
+			}
+
+			@include media-breakpoint-up(md) {
+				margin-left: -160px;
+				width: 150px;
+			}
+		}		
+	}
+	
+	p {
+		
+		.icon-only.icon-help {
+			font-size: 0;
+			
+			&:before {
+				font-size: $fa-font-size-base;
+			}
+		}
+		
+		&:not(#issue_is_private_wrap):not(.redmine-slack-silent)>input[type="checkbox"], 
+		&:not(#issue_is_private_wrap):not(.redmine-slack-silent)>input[type="radio"] {
+			top: -16px;
+			float: right;
+			
+			@include media-breakpoint-up(xs) {
+				float: none;
+				top: 2px;
+			}
+		}
+		
+		.info {
+			display: inline-block;
+		    max-width: $input-max-width-lg;
+		    margin-top: 0.25rem;
+			vertical-align: top;
+		}
+		
+		.inline {
+			margin-right: 0.5rem;
+			padding-top: 0.5rem;
+		}
+	}
+}
+
+.controller-users.action-new,
+.controller-users.action-edit, 
+.controller-settings.action-index {
+	
+	.splitcontentright .box.tabular,
+	.box.tabular.settings {
+		
+		p {
+			
+			@include media-breakpoint-up(xs) {
+				padding-left: 220px !important;
+			}
+		
+			&>label:first-child {
+	
+				@include media-breakpoint-up(xs) {
+					margin-left: -210px;
+					width: 200px;
+				}
+			}
+		}
+	}
+}
+
+.controller-settings.action-plugin {
+	
+	#settings_hours_per_resource_per_day {
+		width: 70px !important;
+	}
+	
+	#settings {
+		
+		
+		.tab-content p {
+			
+			@include media-breakpoint-up(xs) {
+				padding-left: 220px !important;
+			}
+		
+			&>label:first-child {
+	
+				@include media-breakpoint-up(xs) {
+					display: inline-block;
+					margin-left: -210px;
+					width: 230px;
+				}
+			}
+			
+			.info {
+				@include media-breakpoint-up(xs) {
+					margin-left: -210px;
+				}
+			}
+			
+			textarea {
+				display: block;
+				width: 100%;
+				
+				@include media-breakpoint-up(xs) {
+					margin-left: -210px;
+					max-width: none;
+					width: calc(100% + 210px);
+				}
+			}
+		}
+	}
+}
+
+article>header>h3 {
+	margin-top: 0;
+}
+
+.filedroplistner {
+	margin-bottom: 1rem;
+}
+
+.tooltip {
+	position: relative;
+	
+	&:hover {
+		z-index: 25;
+	}
+}
+
+.tooltip span.tip {
+	@include rounded;
+	@include dropdown;
+    text-align: left;
+    position: absolute;
+    top: 0;
+    width: 270px;
+    padding: 0.5rem;
+    font-size: $font-size-xs;
+	display: none;
+	z-index: $zindex-fixed;
+	color: $text-color;
+}
+
+div.tooltip:hover span.tip {
+    display: block;
+}
+
+.box,
+.controller-projects.action-show .splitcontentleft>.wiki {
+	@include rounded;
+	margin-bottom: 0.5rem;
+	background: $white;
+	position: relative;
+	padding: 1.5rem;
+	@include box-shadow-container;
+	border: 1px solid lighten($border-color-light, 5%);
+	
+	&:hover {
+		@include media-breakpoint-up(redmine-mobile) {
+			@include box-shadow-container-hover;
+		}
+	}
+	
+	@include media-breakpoint-up(sm) {
+		padding: 1.5rem;
+	}
+}
+
+.controller-projects.action-show {
+	
+	.box,
+	.splitcontentleft .wiki {
+		margin-bottom: 1.5rem;
+	}
+}
+
+#principals {
+	
+	label {
+		display: block;
+	}
+	
+	.icon:before {
+		width: 16px;
+	}
+}
+
+.add_attachment {
+	display: block;
+	padding: 2rem;
+	margin-top: 1rem;
+	border: 2px dashed $query-form-border;
+	
+	&:hover {
+		border-color: darken($query-form-border, 5%);
+	}
+}
+
+.attachments_fields {
+	display: block;
+	
+	input {
+		width: calc(100% - 3rem) !important;
+		display: inline-block !important;
+		
+		@include media-breakpoint-up(lg) {
+			width: calc(50% - 3rem) !important;
+		}
+		
+		&.filename {
+			border: none;
+			margin-right: 1rem;
+		}
+	}
+	
+	span a.remove-upload {
+		top: 5px !important;
+	}
+
+	
+	.filename, 
+	.description {
+		border: 1px solid $border-color-light;
+	}
+	
+	.description {
+		margin-right: 0.5rem;
+	}
+	
+	&>span {
+		display: block;
+		margin-bottom: 1rem;
+		width: 100%;
+		clear: both;
+		
+		@include media-breakpoint-up(lg) {
+			margin-bottom: 0.5rem;
+		}
+	}
+}
+
+.projectino-controls {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 2rem;
+	width: 100%;
+	background: rgba($body-bg, .85);
+	text-align: center;
+	border-top: 3px solid darken($query-form-bg, 5%);
+	z-index: $zindex-sticky;
+	display: flex;
+	justify-content: center;
+	
+	&.release {
+		position: static;
+	}
+	
+	p {
+		margin: 0;
+	}
+	
+	input {
+		margin: 0 0.5rem;
+	}
+	
+	input[type="submit"]:first-of-type {
+		@include btn-secondary;
+	}
+		
+	input[disabled="disabled"] {
+		opacity: 0.25;
+		pointer-events: none;
+	}
+	
+	input[type="submit"]:first-of-type {
+		width: $btn-width-lg !important;
+		max-width: 49%;
+	}
+	
+	input[type="submit"]+input[type="submit"] {
+		@include btn-tetriary;
+		background: none !important;
+	}
+}
+
+.tabular .projectino-controls {
+	
+	input[type="submit"]:first-of-type {
+		width: $btn-width-lg !important;
+	}
+}
+
+
+/* Toggle filters*/
+
+.toggle-filters {
+	display: inline-block;
+    height: $input-height-base;
+	font-weight: 500;
+	line-height: 1.5;
+	font-size: $font-size-sm2;
+	text-transform: uppercase;
+	vertical-align: middle;
+	cursor: pointer;
+	background-color: transparent;
+	border: 1px solid transparent;
+	padding: .375rem 0.5rem !important;
+	border-radius: $border-radius;
+	
+	@include btn-tetriary;
+	margin-right: 0.5rem;
+}
+
+.controller-issues.action-index,
+.controller-projects.action-index,
+.controller-timelog.action-index,
+.controller-gantts.action-show,
+.controller-calendars.action-show,
+.controller-easy_gantt.action-index,
+.controller-agile_versions.action-index,
+.controller-risks.action-index,
+.controller-agile_boards.action-index,
+.controller-contacts.action-index,
+.controller-deals.action-index,
+.controller-expenses.action-index,
+.controller-resource_bookings.action-index,
+.controller-easy_gantt_resources.action-index,
+.controller-easy_gantt_resources.action-index,
+.controller-redmine_x_project_templates.action-index {
+	
+	#query_form_with_buttons {
+		max-height: 0;
+		overflow: hidden;
+		
+		&.open {
+			max-height: 2000px;
+			margin: 1rem 0;
+		}
+	}
+}
+
+.controller-expenses.action-index,
+.controller-invoices.action-index,
+.controller-operations.action-index,
+.controller-dmsf.action-show {
+		
+	#query_form {
+		max-height: 0;
+		overflow: hidden;
+		
+		&.open {
+			max-height: 2000px;
+		}
+	}
+}
+
+.controller-calendar.action-index {
+	
+	#calendar_filter {
+		max-height: 0;
+		border: 0;
+		overflow: hidden;
+		
+		&.open {
+			max-height: 2000px;
+		}
+	}
+}
+
+.controller-favorite_projects.action-search {
+	
+	#query_form_with_buttons {
+		max-height: 0;
+		overflow: hidden;
+	}
+	
+	#query_form {
+		
+		p.buttons {
+			display: none;
+		}
+		
+		&.open {
+			
+			#query_form_with_buttons {
+				max-height: 2000px;
+			}
+			
+			p.buttons {
+				display: block;
+			}
+		}
+	}
+}
+
+.projectino-addtitional-fields-wrap {
+	
+	.projectino-addtitional-fields {
+		max-height: 0;
+		overflow: hidden;
+	}
+	
+	&.open {
+		
+		.projectino-addtitional-fields {
+			max-height: 2000px;
+			background: darken($query-form-bg, 2%);
+			border: 1px solid darken($border-color-light, 2%);
+			padding: 2rem 1rem 1rem 1rem;
+			margin-top: -1rem;
+			
+			&>.tabular {
+				background: none;
+				border: none;
+			}
+		}
+		
+		#projectino-addtitional-fields-trigger i {
+			@include flipV;
+		}
+	}
+	
+	#projectino-addtitional-fields-trigger {
+		@include rounded360;
+		margin: auto;
+	    display: block;
+	    padding: 0.25rem;
+	    text-align: center;
+		width: 230px;
+		border: 1px solid darken($border-color-light, 2%);
+		background: $query-form-bg;
+		position: relative;
+		z-index: 100;
+		
+		&:hover {
+			cursor: pointer;
+			background: darken($border-color-light, 2%);
+		}
+		
+		i:before {
+			margin-left: 0.5rem;
+		}
+	}
+}
+
+span.required {
+	color: $brand-danger;
+}
+
+#wiki_form .filedroplistner>fieldset:not(#filters):not(#options):not(.collapsible) {
+	padding-left: 170px !important;
+	border: none;
+}
+
+.controller-wiki {
+	
+	fieldset.collapsible legend {
+		@include rounded;
+		font-weight: 600;
+		background: $query-form-border;
+		padding: 0 1rem;
+		color: $headings-color;
+	}
+}
+
+.wiki {
+	word-break: break-all;
+}
+
+.wiki-update-info {
+	margin-top: 1rem;
+	display: block;
+}
+
+div.wiki-page {
+	@include rounded;
+	background: $white;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	width: 100%;
+	
+	@include media-breakpoint-up(md) {
+		padding: 1rem 2rem 2rem 2rem;
+	}
+	
+	@include media-breakpoint-up(md) {
+		padding: 2rem;
+	}
+}
+
+.controller-wiki.action-show #content>.contextual {
+	margin: 0 1.5rem 0.75rem 1.5rem !important;
+	
+	@include media-breakpoint-up(xl) {
+		margin: 1.25rem 1.5rem 0.75rem 1.5rem !important;
+	}
+}
+
+.controller-timelog { // declared separately because .icon-time-add is also on issue detail
+	
+	#content {
+		
+		&>.contextual>.icon:not(.icon-edit):not(.icon-add).icon-time-add {
+			@include btn;
+			@include btn-secondary;
+			
+			&:hover,
+			&:hover:before {
+				color: $white !important;
+			}
+		}
+	}
+}
+
+em.info {
+	font-size: $font-size-sm1;
+}
+
+/* ==========================================================================
+   Print
+   ========================================================================== */
+
+@media print {
+	
+	.mobile-home-button,
+	.mobile-toggle-button,
+	#quick-search,
+	#actionbar,
+	#top-menu>ul {
+		display: none;
+	}
+	
+	body {
+		background: $white !important;
+	}
+	
+	#top-menu {
+		position: static;
+	}
+	
+	#header {
+		border: none;
+		flex-direction: row;
+		
+		h1 {
+			display: none;
+		}
+	}
+	
+	#main-menu, 
+	#main-menu2 {
+		display: none;
+	}
+	
+	#header:before {
+		content: none;
+	}
+}

@@ -1,0 +1,123 @@
+/*!
+ * Projectino
+ * Copyright 2020 RedmineX
+ * For license, see https://www.redmine-x.com
+ * Created by Michael Staněk
+ * Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ */
+
+// Normalize
+@import "css/normalize.css";
+
+// Font Roboto
+
+/* Bold */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../font/roboto/roboto-bold-webfont.woff2') format('woff2'),
+         url('../font/roboto/roboto-bold-webfont.woff') format('woff');
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* Regular */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../font/roboto/roboto-regular-webfont.woff2') format('woff2'),
+         url('../font/roboto/roboto-regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Regular Italic */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../font/roboto/roboto-italic-webfont.woff2') format('woff2'),
+         url('../font/roboto/roboto-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Medium 500 */
+@font-face {
+    font-family: 'Roboto';
+    src: url('../font/roboto/roboto-medium-webfont.woff2') format('woff2'),
+         url('../font/roboto/roboto-medium-webfont.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+// Font Awesome PRO
+@import "../../font/fontawesome-pro-5.13.0/scss/fontawesome.scss";
+@import "../../font/fontawesome-pro-5.13.0/scss/regular.scss";
+@import "../../font/fontawesome-pro-5.13.0/scss/light.scss";
+
+// Variables & Mixins
+@import "_variables.scss"; //variables imported first to override Bootstrap variables
+@import "_mixins.scss";
+@import "_breakpoints.scss";
+
+// Themes
+@import "theme-dark.scss";
+@import "theme-light.scss";
+
+// Components & Elements
+@import "_badge.scss";
+@import "_form.scss";
+@import "_header.scss";
+@import "_icons.scss";
+@import "_layout.scss";
+@import "_list.scss";
+@import "_messages.scss";
+@import "_table.scss";
+@import "_top-menu.scss";
+@import "_type.scss";
+@import "_ui-widget.scss";
+@import "_utilities.scss";
+
+// Views
+@import "views/_general.scss";
+@import "views/_overrides.scss";
+@import "views/activity.scss";
+@import "views/admin.scss";
+@import "views/calendar.scss";
+@import "views/document.scss";
+@import "views/gantt-resources.scss";
+@import "views/gantt.scss";
+@import "views/issue.scss";
+@import "views/login.scss";
+@import "views/mypage.scss";
+@import "views/project.scss";
+@import "views/roadmap-news.scss";
+@import "views/search.scss";
+@import "views/spent_time.scss";
+@import "views/user.scss";
+
+
+// Plugin assets
+@import "plugin_assets/_additionals.scss";
+@import "plugin_assets/_ck_editor.scss";
+@import "plugin_assets/_easy_gantt.scss";
+@import "plugin_assets/_evm.scss";
+@import "plugin_assets/_favorite-projects.scss";
+@import "plugin_assets/_mega_calendar.scss";
+@import "plugin_assets/_messenger.scss";
+@import "plugin_assets/_redmine_agile.scss";
+@import "plugin_assets/_redmine_banner.scss";
+@import "plugin_assets/_redmine_checklist.scss";
+@import "plugin_assets/_redmine_crm.scss";
+@import "plugin_assets/_redmine_dmsf.scss";
+@import "plugin_assets/_redmine_finance.scss";
+@import "plugin_assets/_redmine_helpdesk.scss";
+@import "plugin_assets/_redmine_impersonate.scss";
+@import "plugin_assets/_redmine_invoices.scss";
+@import "plugin_assets/_redmine_issue_dynamic_edit.scss";
+@import "plugin_assets/_redmine_issue_templates.scss";
+@import "plugin_assets/_redmine_local_avatars.scss";
+@import "plugin_assets/_redmine_recurring_issues.scss";
+@import "plugin_assets/_redmine_resources.scss";
+@import "plugin_assets/_redmine_zenedit.scss";
+@import "plugin_assets/_redminex_agile.scss";
+@import "plugin_assets/_redminex_gantt-resources.scss";
+@import "plugin_assets/_redminex_project-templates.scss";
+@import "plugin_assets/_that_meeting.scss";

@@ -1,0 +1,213 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.projectino.cz
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+
+/* ==========================================================================
+   Login
+   ========================================================================== */
+
+body:not([class*="project-"]).action-login #content {
+	
+	@include media-breakpoint-up(redmine-mobile) {
+		padding-top: 4rem !important;
+	}
+}
+
+.controller-account.action-login {
+	overflow: hidden;
+	
+	&.authentification {
+		
+		#top-menu,
+		#header {
+			display: none;
+		}
+	}
+	
+	&:before {
+		@include transition;
+		content: '';
+		background-image: url('../images/login.jpg');
+	    background-position: center top;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	    width: 100%;
+	    min-width: unset;
+	    height: 100%;
+	    top: 30%;
+	    left: 50%;
+	    position: absolute;
+		transform: translate(-50%,-50%);
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			top: 50%;
+			transform: translate(-30%,-50%);
+		}
+		
+		@include media-breakpoint-up(hd) {
+			height: 110%;
+			top: 45%;
+		}
+		
+		@include media-breakpoint-up(2k) {
+			background-image: url('../images/login-2k.jpg');
+		}
+	}
+	
+	&:after {
+		content: 'Projectino is made with ❤ in Prague, Czechia';
+		position: absolute;
+		top: 20%;
+		right: 2.5%;
+		color: $white;
+		font-weight: 500;
+		max-width: 200px;
+		text-align: right;
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			max-width: 300px;
+			font-size: $font-size-xl;
+			top: 8%;
+		}
+	}
+	
+	
+	#actionbar {
+		display: none;
+	}
+	
+	#main, 
+	#content {
+		height: 100vh;
+	}
+	
+	#content {
+		border: none;
+		background: $white;
+		height: 70%;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		padding: 2rem;
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			top: 0;
+			bottom: unset;
+			width: 50%;
+			height: 100%;
+		}
+	}
+	
+	#login-form {
+		@include translate;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		padding: 1rem;
+		
+		@include media-breakpoint-up(xxs) {
+			max-width: 100%;
+			padding: 3rem 2rem 2rem 2rem;
+			max-width: 380px;
+			min-width: 380px;
+		}
+		
+		label {
+			font-weight: 600;
+			color: $headings-color;
+			
+			.lost_password {
+				font-weight: 400;
+			}
+		}
+	}
+	
+	#username, 
+	#password {
+		margin-bottom: 1rem;
+		margin-top: 0.25rem;
+		background: lighten($border-color-light, 11%) !important;
+		height: 2.5rem !important;
+	}
+	
+	input:-webkit-autofill, 
+	input:-webkit-autofill:hover, 
+	input:-webkit-autofill:focus, 
+	input:-webkit-autofill:active {
+	    -webkit-box-shadow: 0 0 0 30px lighten($border-color-light, 11%) inset !important;
+	}
+
+	
+	#login-submit {
+		margin-top: 2rem;
+		display: block;
+		width: 100%;
+		height: 2.5rem;
+	}
+	
+	.login-logo {
+		max-width: 200px;
+		display: block;
+		margin: 0 auto 2rem auto;
+		transform: translateX(-0.5rem);
+		text-align: center;
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			max-width: 240px;
+		}
+		
+		@include media-breakpoint-up(xl) {
+			max-width: 300px;
+			margin: 0 auto 3rem auto;
+		}
+	}
+	
+	.login-quote {
+		font-style: italic;
+		color: $text-color-light;
+		text-align: left;
+		max-width: 85%;
+		margin: 2rem auto 0 auto;
+	}
+	
+	.lost_password {
+		float: right;
+	}
+	
+	.flash {
+		width: 60% !important;
+		margin: 1rem auto !important;
+	}
+}

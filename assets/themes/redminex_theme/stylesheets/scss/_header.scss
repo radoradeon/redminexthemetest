@@ -1,0 +1,423 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.redmine-x.com
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+
+.drdn-items {
+	
+	&>* {
+		display: block;
+	}
+	
+	&>strong {
+		padding: 0 1rem;
+	}
+}
+
+.drdn {
+    position: relative;
+}
+
+.drdn-content {
+	display: none;
+	min-width: 200px;
+	position: absolute;
+	right: 0 !important;
+	left: unset !important;
+	top: 40px;
+	z-index: $zindex-dropdown;
+	width: 300px;
+	color: $text-color;
+	
+	strong {
+		margin-top: 1rem;
+	}
+	
+	a {
+		@include rounded;
+		padding: 0.5rem 1rem;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		max-width: 100%;
+		font-size: $font-size-sm2;
+		display: block;
+	}
+	
+	.projects {
+		max-height: 400px;
+		overflow: auto;
+		padding: 0.5rem;
+	}
+	
+	.all-projects {
+		padding: 1rem;
+		margin-top: 1rem;
+		
+		a {
+			margin: 0;
+			padding: 0;
+			color: $primary;
+			text-align: center;
+		}
+		
+		a:hover {
+			background: none;
+			color: $primary;
+			text-decoration: underline;
+		}
+	}
+}
+
+.drdn.expanded .drdn-content {
+    display: block;
+}
+
+#quick-search {
+	display: flex;
+	align-items: flex-end;
+	flex-direction: row;
+	justify-content: flex-end;
+	
+	@include media-breakpoint-up(redmine-mobile) {
+		padding: 0.5rem 1rem;
+	}
+	
+	@include media-breakpoint-up(xl) {
+		padding: 0.5rem 0;
+		align-items: center;
+	}
+	
+	&>form {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		align-items: flex-start;
+		margin-right: 0.5rem;
+		
+		@include media-breakpoint-up(xl) {
+			align-items: center;
+			flex-direction: row;
+		}
+	}
+	
+	label[for="q"] {
+		font-size: 0;
+	}
+}
+
+#header {
+	
+	.mobile-home-button {
+		flex-basis: 64px;
+		height: 63px;
+		padding: 1rem;
+		z-index: $zindex-fixed;
+		background: $white;
+		margin-right: auto;
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			display: none !important;
+		}
+	}
+	
+	#quick-search {
+		
+		form {
+			display: flex !important;
+			width: 100%;
+			
+			#q {
+				max-width: none !important;
+				width: 100%;
+				z-index: $zindex-fixed;
+				height: $input-height-xl;
+				background-image: url(../images/icon-search.svg);
+				background-repeat: no-repeat;
+				background-position: 0.5rem center;
+				background-color: darken($body-bg, 1%);
+			    background-size: 18px 18px;
+			    padding-left: 2.5rem;
+				
+				@include media-breakpoint-up(redmine-mobile) {
+					height: $input-height-base;
+					background-color: $input-bg;
+				}
+				
+				@include media-breakpoint-up(xl) {
+					background-color: darken($body-bg, 2%);
+				}
+			}
+		}
+	}
+}
+
+#header, 
+.flyout-menu {
+	
+	#project-jump {
+			
+		&.drdn {
+			min-width: 180px;
+			
+			@include media-breakpoint-up(redmine-mobile) {
+				max-width: 220px;
+			}
+		}
+		
+		.drdn-trigger {
+			@include rounded;
+		    display: block;
+			width: 100%;
+			height: 100%;
+			padding: .5rem 1.5rem .5rem .75rem;
+			overflow: hidden;
+			line-height: 1.25;
+			text-overflow: ellipsis;
+			white-space: nowrap;
+			
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+#projects-quick-search {
+	width: 90%;
+	margin: 1rem auto 0 auto;
+	display: block;
+}
+
+#main-menu,
+#main-menu2 {
+	flex: 0 0 100%;
+	width: 100%;
+	position: relative;
+	padding: 0 0.5rem 0.5rem 0.5rem;
+	overflow-x: scroll;
+	
+	@include media-breakpoint-up(redmine-mobile) {		
+		padding: 0;
+		overflow-x: unset;
+	}
+	
+	ul:not(.menu-children) {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		flex-wrap: wrap;
+		position: relative;
+		padding: 0 1rem 0 0;
+	}
+	
+	&>ul:not(.menu-children) {
+		width: 2000px;
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			width: auto !important;
+		}
+	}
+	
+	li {
+		@include transition;
+		list-style: none;
+		position: relative;
+	}
+	
+	li:first-child {
+		position: relative; // due to plus icon
+		
+		.menu-children {
+			right: unset;
+			left: 0;
+		}
+	}
+	
+	&>ul>li {
+		margin: 0.5rem 0.5rem 0.5rem 0;
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			margin: 0.25rem 0.5rem 0.75rem 0;
+		}
+	}
+	
+	&>ul>li:not(:first-of-type),
+	#expanded-menu {
+		
+		&:hover {
+			transform: scale(1.0625);
+			
+			.menu-children {
+				transform: none;
+			}
+		}
+	}
+	
+	&>ul>li>a,
+	#expanded-menu {
+		@include rounded;
+		padding: 0.25rem 1rem;
+		position: relative;
+	} 
+	
+	#expanded-menu.hidden {
+		display: none !important;
+	}
+	
+	.expanded-menu-wrap {
+		float: left;
+		position: relative;
+		
+		@include media-breakpoint-up(redmine-mobile) {
+			float: none;
+		}
+		
+		#expanded-menu-items:not(.menu-children) {
+			display: flex;
+			flex-wrap: wrap;
+			
+			li {
+				margin-right: 0.5rem;
+			}
+			
+			a {
+				@include rounded;
+				padding: 0.25rem 1rem;
+				color: $text-color;
+				border: 1px solid $border-color-light;
+				display: block;
+			}
+			
+			&.selected,
+			&:not(.new-object):hover {
+				background: $white;
+			}
+		}
+		
+		.fa-chevron-down:before {
+			top: 2px;
+			position: relative;
+		}
+	}
+	
+	#expanded-menu-wrap:first-of-type,
+	li:nth-of-type(1) + .expanded-menu-wrap,
+	li:nth-of-type(2) + .expanded-menu-wrap {
+		
+		#expanded-menu-items {
+			left: 0;
+			right: unset;
+		}
+	}
+	
+	#new-object {
+		background: $secondary;
+		border: 1px solid $secondary;
+		line-height: 1.5;
+		font-weight: 700;
+		padding: .25rem 1.5rem;	
+		color: $white;
+		
+		&:hover {
+			background: darken($secondary, 10%);
+		}
+	}
+	
+	#new-object+.menu-children {
+		right: unset;
+		left: 0;
+	}
+		
+	.menu-children {
+	    width: inherit;
+	    background-color: $white;
+		z-index: $zindex-sticky;
+		top: 40px;
+		right: 0;
+		
+		&.visible {
+			display: block;
+		}
+		
+		a {
+			position: relative;
+			
+			&:after,
+			&:hover:after  {
+				content: none;
+			}
+		}
+		
+		.new-issue-sub {
+			
+			&:before {
+				content: "+";
+				margin-right: 0.5rem;
+				font-weight: 700;
+			}
+		}
+	}
+	
+	.tabs-buttons {
+		display: none !important;
+	}
+	
+	a.expanded-menu {
+		display: flex !important;
+		line-height: 1.375;
+		margin-right: 0.5rem;
+		top: -4px;
+	}
+	
+	#expanded-menu-items {
+		animation: growOut 200ms ease-in-out forwards;
+		transform-origin: top center;
+		
+		@keyframes growOut {
+			0% {
+			transform: scale(0)
+			}
+			80% {
+			transform: scale(1.1)
+			}
+			100% {
+			transform: scale(1)
+			}
+		}
+	}
+}

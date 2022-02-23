@@ -1,0 +1,26 @@
+<div class="contextual">
+<%= link_to l(:button_edit), edit_issue_path(@issue),
+            :onclick => 'showAndScrollTo("update", "issue_notes"); return false;',
+            :class => 'icon icon-edit', :accesskey => accesskey(:edit) if @issue.editable? %>
+<%= link_to l(:button_log_time), new_issue_time_entry_path(@issue),
+            :class => 'icon icon-time-add' if User.current.allowed_to?(:log_time, @project) %>
+<%= link_to "", "javascript:void(0)", :class => 'far fa fa-ellipsis-v', :id => 'issue-action-dropdown-trigger' %>
+<ul id="issue-action-dropdown" class="menu-children">
+  <li>
+    <%= watcher_link(@issue, User.current) %>
+  </li>
+  <li>
+    <%= link_to l(:button_copy), project_copy_issue_path(@project, @issue),
+                :class => 'icon icon-copy' if User.current.allowed_to?(:copy_issues, @project) && Issue.allowed_target_projects.any? %>
+  </li>
+  <li>
+    <%= copy_object_url_link(issue_url(@issue, only_path: false)) %>
+  </li>
+  <li>
+    <%= link_to l(:button_delete), issue_path(@issue),
+                :data => {:confirm => issues_destroy_confirmation_message(@issue)},
+                :method => :delete, :class => 'icon icon-del' if @issue.deletable? %>
+  </li>
+</ul>
+</div>
+

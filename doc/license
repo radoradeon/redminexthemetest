@@ -1,0 +1,26 @@
+LICENSING
+
+RedmineX Licensing
+
+This end user License Agreement is a binding legal agreement between you and RedmineX. Purchase, installation or use of RedmineX Extensions provided on www.redmine-x.c signifies that you have read, understood, and agreed to be bound by the terms outlined below.
+
+RedmineX GPL Licensing
+
+All Redmine Extensions produced by RedmineX are released under the GNU General Public License, version 2 (http://www.gnu.org/licenses/gpl-2.0.html). Specifically, the parts with Ruby code are distributed under the GPL license. If not otherwise stated, all images, manuals, cascading style sheets, and included JavaScript are NOT GPL, and are released under the RedmineX Proprietary Use License v1.0 (See below) unless specifically authorized by RedmineX. Elements of the extensions released under this proprietary license may not be redistributed or repackaged for use other than those allowed by the Terms of Service.
+
+RedmineX Proprietary Use License (v1.0)
+
+The RedmineX Proprietary Use License covers any images, cascading stylesheets, manuals and JavaScript files in any extensions produced and/or distributed by www.redmine-x.com. These files are copyrighted by www.redmine-x.com (RedmineX) and cannot be redistributed in any form without prior consent from www.redmine-x.com (RedmineX)
+
+Usage Terms
+
+You are allowed to use the Extensions on one or many "production" domains, depending on the type of your license
+You are allowed to make any changes to the code, however modified code will not be supported by us.
+
+Modification Of Extensions Produced By RedmineX.
+
+You are authorized to make any modification(s) to RedmineX extension Ruby code. However, if you change any Ruby code and it breaks functionality, support may not be available to you or you may be charged.
+
+In accordance with the RedmineX Proprietary Use License v1.0, you may not release any proprietary files (modified or otherwise) under the GPL license. The terms of this license and the GPL v2 prohibit the removal of the copyright information from any file.
+
+Please contact us if you have any requirements that are not covered by these terms.

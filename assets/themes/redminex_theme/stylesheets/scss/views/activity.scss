@@ -1,0 +1,138 @@
+// RedmineX Theme
+// Copyright 2020 RedmineX
+// For license, see https://www.projectino.cz
+// Created by Michael Staněk
+// Created without vendor prefixes, "AutoPrefixed" by PrePros v5 (https://prepros.io)
+ 
+// Media Queries to Copy / Paste:
+ 
+// 380px
+// @include media-breakpoint-up(xxs) {}
+
+// 480px
+// @include media-breakpoint-up(xs) {}
+
+// 576px
+// @include media-breakpoint-up(sm) {}
+
+// 768px
+// @include media-breakpoint-up(md) {}
+
+// 899px
+// @include media-breakpoint-up(redmine-mobile) {}
+
+// 992px
+// @include media-breakpoint-up(lg) {}
+
+// 1200px
+// @include media-breakpoint-up(xl) {}
+
+// 1500px
+// @include media-breakpoint-up(hd) {}
+
+// 1900px
+// @include media-breakpoint-up(2k) {}
+
+/* ==========================================================================
+   Activity
+   ========================================================================== */
+
+#activity {
+	
+	dl {
+		@include rounded;
+		padding: 1rem 0;
+		margin: 0 0 0 2rem;
+		z-index: 1;
+		
+		dt:not(:first-of-type) {
+			border-top: 3px solid $body-bg;
+		}
+	}
+	
+	dd {
+		margin: 0 0 1rem 2.5rem;
+	}
+	
+	.gravatar {
+		position: relative;
+		top: 0;
+		margin-right: 0.5rem;
+		width: 32px;
+		height: 32px;
+		float: left;
+		margin-bottom: -1rem;
+	}
+	
+	.icon {
+		background: none;
+	}
+	
+	.icon-issue-edit:before {
+		content: none;
+	}
+	
+	.time {
+		position: absolute;
+		right: 1rem;
+		bottom: -30px;
+		font-size: $font-size-sm2;
+		color: $text-color-light;
+	}
+	
+	h3 {
+		font-weight: 400;
+		margin-bottom: 1.25em;
+		position: relative;
+		z-index: 100;
+		
+		&:not(:first-of-type) {
+			margin-top: 3rem;
+		}
+		
+		&:before {
+			@extend %fa-icon;
+			@extend .fal;
+			content: fa-content($fa-var-circle);
+			padding: 3px 0;
+			font-size: 10px;
+			margin: 0 4px;
+		}
+	}
+	
+	dt {
+		position: relative;
+	}
+	
+	dt, dd {
+		padding-left: 2rem;
+		padding-right: 2rem;
+		clear: both;
+	}
+	
+	dt:not(:first-child) {
+		padding-top: 1rem;
+	}
+	
+	dd:last-child {
+		margin-bottom: 0;
+	}
+	
+	dt.grouped, 
+	dd.grouped {
+		padding-left: 4rem;
+	}
+}
+
+.controller-activities.action-index {
+	
+	#content>h2 {
+		margin-bottom: 0.125em;
+	}
+	
+	.subtitle {
+		margin-bottom: 1rem;
+		font-size: $font-size-xs;
+		color: $text-color-light;
+	}
+}
