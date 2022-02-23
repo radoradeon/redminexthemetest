@@ -1,0 +1,10 @@
+.controller-account.action-login:after {content: none !important;}
+#header h1{font-family: 'Raleway', sans-serif; border-left: 6px solid #3399FF; padding-left: 4px; font-weight: bold; }
+#footer{background-color: #F9F9F9!important;}
+.login-quote{display: none!important;}
+.list_cf span.label{margin-left: 4px; font-weight: bold!important;}
+td.name a{font-weight: bold; color: #003399; padding: 2px; border: 1px dashed #E3E3E3;}
+#sidebar h3{font-weight: bold; padding: 4px; border: 1px dashed #E2E2E2;}
+.project.child{padding: 4px; border: 1px dashed #E1E1E1;}
+#fakeDynamicForm{border-top: 2px dashed #FC619B; border-bottom: 2px dashed #FC619B; padding-top: 6px; padding-bottom: 6px; background-color: #F7F8FA;}
+#fakeDynamicForm .splitcontent{background-color: #F7F8FA!important;}
